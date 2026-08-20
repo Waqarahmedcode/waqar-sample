@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<meta name="ext-resource-dependency" content="assets/certs/pcp.webp" data-resource-id="certPcp" />
+<meta name="ext-resource-dependency" content="assets/certs/fbr-exemption.webp" data-resource-id="certExemption" />
+<meta name="ext-resource-dependency" content="assets/certs/fbr-taxpayer.webp" data-resource-id="certTaxpayer" />
+<meta name="ext-resource-dependency" content="assets/certs/shcc-license.webp" data-resource-id="certShccLicence" />
+<meta name="ext-resource-dependency" content="assets/certs/shcc-reg.webp" data-resource-id="certShccReg" />
+<meta name="ext-resource-dependency" content="assets/certs/sindh-charity.webp" data-resource-id="certCharity" />
+<meta name="ext-resource-dependency" content="assets/certs/sindh-trust.webp" data-resource-id="certTrust" />
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  html, body { margin: 0; padding: 0; background: #FBF8F1; overflow-x: clip; }
+  html { min-height: 100%; }
+  body { -webkit-font-smoothing: antialiased; }
+  a { color: #005C3E; text-decoration: none; }
+  a:hover { color: #A9863F; }
+  ::selection { background: #C5A059; color: #16291F; }
+  @keyframes kaGlow { 0%, 100% { opacity: .5; transform: scale(1); } 50% { opacity: .85; transform: scale(1.06); } }
+  @keyframes kaFade { from { opacity: 0; } to { opacity: 1; } }
+  @media (max-width: 1180px) {
+    [data-brand-eyebrow] { display: none; }
+    [data-topnav] { gap: 18px !important; font-size: 11px !important; letter-spacing: .05em !important; }
+  }
+  @media (max-width: 1000px) {
+    [data-topnav] a:not([href="#donate"]) { display: none; }
+  }
+  @keyframes kaPop { from { opacity: 0; transform: translateY(22px) scale(.965); } to { opacity: 1; transform: none; } }
+  @media print { [data-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; } }
+  @media (prefers-reduced-motion: reduce) { [data-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; } }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail" data-bg-color="#04372A">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="#04372A"></rect><circle cx="100" cy="88" r="33" fill="none" stroke="#C5A059" stroke-width="2.5"></circle><path d="M100 72v32M84 88h32" stroke="#C5A059" stroke-width="6" stroke-linecap="round"></path><text x="100" y="150" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#FBF8F1">Khidmat-e-Alam</text></svg>
+</template>
+
+<div style="font-family:'Montserrat',sans-serif;color:#241F19;">
+
+  <div ref="{{ progressRef }}" style="position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,#A9863F,#D8BE86);z-index:120;box-shadow:0 0 12px rgba(197,160,89,.7);"></div>
+
+  <header ref="{{ headerRef }}" style="position:sticky;top:0;z-index:100;background:rgba(251,248,241,.72);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid rgba(22,41,31,.08);transition:box-shadow .4s ease, background .4s ease;">
+    <div style="max-width:1240px;margin:0 auto;padding:15px 40px;display:flex;align-items:center;gap:16px;">
+      <img src="assets/ka-logo.jpg" alt="Khidmat-e-Alam Welfare Trust" style="width:46px;height:46px;border-radius:50%;object-fit:contain;background:#fff;box-shadow:0 2px 10px rgba(22,41,31,.14), 0 0 0 1px rgba(197,160,89,.35);">
+      <div style="display:flex;flex-direction:column;flex:0 0 auto;">
+        <span data-brand-name="1" style="font-family:'Playfair Display',serif;font-weight:600;font-size:18px;color:#16291F;line-height:1.15;letter-spacing:-.2px;white-space:nowrap;">Khidmat-e-Alam Welfare Trust</span>
+        <span data-brand-eyebrow="1" style="font-size:9.5px;letter-spacing:.32em;color:#A39A88;font-weight:600;white-space:nowrap;">SERVING HUMANITY WITH CARE · EST. 2005</span>
+      </div>
+      <nav data-topnav="1" style="margin-left:auto;display:flex;align-items:center;gap:26px;font-size:12.5px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;white-space:nowrap;">
+        <a href="#story" style="color:#5B554A;transition:color .25s ease;" style-hover="color:#16291F;">Story</a>
+        <a href="#services" style="color:#5B554A;transition:color .25s ease;" style-hover="color:#16291F;">Services</a>
+        <a href="#impact" style="color:#5B554A;transition:color .25s ease;" style-hover="color:#16291F;">Impact</a>
+        <a href="#camps" style="color:#5B554A;transition:color .25s ease;" style-hover="color:#16291F;">Camps</a>
+        <a href="#future" style="color:#5B554A;transition:color .25s ease;" style-hover="color:#16291F;">Future</a>
+        <a href="#accreditation" style="color:#5B554A;transition:color .25s ease;" style-hover="color:#16291F;">Accreditation</a>
+        <a href="#contact" style="color:#5B554A;transition:color .25s ease;" style-hover="color:#16291F;">Contact</a>
+        <a href="#donate" style="color:#16291F;background:linear-gradient(180deg,#E3CB93 0%,#C5A059 52%,#AC8942 100%);padding:12px 26px;border-radius:999px;letter-spacing:.11em;box-shadow:0 1px 0 rgba(255,255,255,.55) inset, 0 0 0 1px rgba(140,109,48,.35), 0 8px 20px rgba(140,109,48,.3);transition:transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .3s ease;" style-hover="transform:translateY(-2px);box-shadow:0 1px 0 rgba(255,255,255,.7) inset, 0 0 0 1px rgba(140,109,48,.45), 0 14px 30px rgba(140,109,48,.42);color:#16291F;">Donate</a>
+      </nav>
+    </div>
+  </header>
+
+  <section style="background:linear-gradient(165deg,#04372A 0%,#005C3E 48%,#03412F 100%);color:#FBF8F1;position:relative;overflow:hidden;">
+    <div style="position:absolute;top:-280px;right:-160px;width:760px;height:760px;border-radius:50%;background:radial-gradient(circle, rgba(197,160,89,.22), transparent 66%);animation:kaGlow 11s ease-in-out infinite;"></div>
+    <div style="position:absolute;bottom:-320px;left:-220px;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle, rgba(255,255,255,.07), transparent 70%);"></div>
+    <div style="max-width:1240px;margin:0 auto;padding:118px 40px 108px;position:relative;display:grid;grid-template-columns:1.04fr .96fr;gap:72px;align-items:center;">
+      <div data-reveal="1" style="opacity:0;">
+        <div style="display:flex;align-items:center;gap:16px;margin-bottom:30px;">
+          <span style="width:42px;height:1px;background:linear-gradient(90deg,transparent,#C5A059);"></span>
+          <span style="font-weight:600;font-size:11px;letter-spacing:.46em;color:#D8BE86;">KARACHI · PAKISTAN · SINCE 2005</span>
+        </div>
+        <h1 style="font-family:'Playfair Display',serif;font-weight:500;font-size:78px;line-height:1.02;margin:0 0 26px;letter-spacing:-1.8px;">A journey of service, from one clinic to an <em style="font-style:italic;color:#E3CB93;">institution</em>.</h1>
+        <p style="font-size:18.5px;line-height:1.78;color:rgba(251,248,241,.76);margin:0 0 40px;max-width:540px;font-weight:300;">Dignified healthcare, clean water and hope for Karachi's most vulnerable families — accredited, audited and open to the world.</p>
+        <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap;">
+          <a href="#donate" style="background:linear-gradient(180deg,#E3CB93 0%,#C5A059 52%,#AC8942 100%);color:#16291F;font-weight:700;font-size:13.5px;letter-spacing:.12em;text-transform:uppercase;padding:19px 40px;border-radius:999px;box-shadow:0 1px 0 rgba(255,255,255,.6) inset, 0 12px 30px rgba(0,0,0,.34);transition:transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .3s ease;" style-hover="transform:translateY(-3px);box-shadow:0 1px 0 rgba(255,255,255,.75) inset, 0 20px 44px rgba(0,0,0,.44);color:#16291F;">Partner with us</a>
+          <a href="#story" style="color:#FBF8F1;font-weight:600;font-size:13.5px;letter-spacing:.12em;text-transform:uppercase;padding:19px 34px;border-radius:999px;background:rgba(255,255,255,.07);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 0 0 1px rgba(216,190,134,.35), 0 1px 0 rgba(255,255,255,.16) inset;transition:background .3s ease, transform .3s cubic-bezier(.2,.8,.2,1);" style-hover="background:rgba(255,255,255,.14);transform:translateY(-3px);color:#FBF8F1;">Read our story</a>
+        </div>
+      </div>
+      <div data-reveal="2" style="opacity:0;position:relative;">
+        <img src="assets/camp-photo.png" alt="Care at a Khidmat-e-Alam free medical camp" style="width:100%;height:540px;object-fit:cover;border-radius:22px;display:block;box-shadow:0 40px 90px rgba(0,0,0,.5), 0 0 0 1px rgba(216,190,134,.28);">
+        <div style="position:absolute;left:-30px;bottom:38px;background:rgba(9,48,36,.6);backdrop-filter:blur(22px) saturate(160%);-webkit-backdrop-filter:blur(22px) saturate(160%);border-radius:18px;padding:22px 30px;box-shadow:0 0 0 1px rgba(216,190,134,.35), 0 1px 0 rgba(255,255,255,.14) inset, 0 24px 50px rgba(0,0,0,.42);">
+          <div style="font-family:'Playfair Display',serif;font-size:44px;color:#E3CB93;line-height:1;letter-spacing:-1px;">78%</div>
+          <div style="font-size:12px;color:rgba(251,248,241,.82);margin-top:8px;max-width:180px;line-height:1.5;letter-spacing:.02em;">of the 2026 camp budget went solely to free medicines</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="story" style="max-width:1240px;margin:0 auto;padding:120px 40px;">
+    <div data-reveal="1" style="opacity:0;display:flex;align-items:baseline;gap:22px;margin-bottom:44px;">
+      <span style="font-family:'Playfair Display',serif;font-size:64px;color:rgba(197,160,89,.32);line-height:.8;font-weight:500;">01</span>
+      <div>
+        <div style="font-weight:600;font-size:11px;letter-spacing:.42em;color:#A9863F;margin-bottom:6px;">OUR STORY</div>
+        <div style="font-size:12.5px;letter-spacing:.18em;color:#A39A88;text-transform:uppercase;">The beginning · 2005</div>
+      </div>
+      <span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(197,160,89,.45),transparent);"></span>
+    </div>
+    <div style="display:grid;grid-template-columns:1.12fr .88fr;gap:76px;align-items:start;">
+      <div data-reveal="2" style="opacity:0;">
+        <h2 style="font-family:'Playfair Display',serif;font-weight:500;font-size:56px;line-height:1.08;margin:0 0 32px;color:#16291F;letter-spacing:-1.2px;">It began with a <em style="font-style:italic;color:#A9863F;">single clinic</em>.</h2>
+        <p style="font-size:17.5px;line-height:1.85;color:#544E43;margin:0 0 22px;font-weight:300;"><span style="float:left;font-family:'Playfair Display',serif;font-size:76px;line-height:.82;color:#005C3E;padding:6px 14px 0 0;font-weight:500;">I</span>n 2005, the philanthropist <strong style="color:#16291F;font-weight:600;">Himayatullah Sadukhani</strong> opened a small clinic in Nazimabad with one urgent purpose — dignified healthcare for families who could not afford it.</p>
+        <p style="font-size:17.5px;line-height:1.85;color:#544E43;margin:0 0 34px;font-weight:300;">Karachi's rapid expansion and deep inequality had left millions without a reliable safety net. That single clinic became the seed of a thriving, multi-sector institution.</p>
+        <blockquote style="margin:0;padding:26px 0 26px 30px;border-left:2px solid #C5A059;font-family:'Playfair Display',serif;font-style:italic;font-size:25px;line-height:1.5;color:#16291F;">Healthcare, education and clean water are fundamental human rights — independent of financial capacity.</blockquote>
+      </div>
+      <div data-reveal="3" style="opacity:0;display:grid;grid-template-columns:1fr 1fr;gap:18px;">
+        <div style="background:rgba(255,255,255,.72);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:18px;padding:28px 24px;box-shadow:0 0 0 1px rgba(22,41,31,.07), 0 1px 0 rgba(255,255,255,.9) inset, 0 18px 40px rgba(22,41,31,.09);transition:transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s ease;" style-hover="transform:translateY(-6px);box-shadow:0 0 0 1px rgba(197,160,89,.3), 0 1px 0 rgba(255,255,255,.9) inset, 0 28px 60px rgba(22,41,31,.16);"><div style="font-family:'Playfair Display',serif;font-size:36px;font-weight:500;color:#005C3E;line-height:1;letter-spacing:-1px;">2005</div><div style="font-size:12.5px;color:#8C8474;margin-top:10px;line-height:1.5;">Established in Nazimabad, Karachi</div></div>
+        <div style="background:rgba(255,255,255,.72);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:18px;padding:28px 24px;box-shadow:0 0 0 1px rgba(22,41,31,.07), 0 1px 0 rgba(255,255,255,.9) inset, 0 18px 40px rgba(22,41,31,.09);transition:transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s ease;" style-hover="transform:translateY(-6px);box-shadow:0 0 0 1px rgba(197,160,89,.3), 0 1px 0 rgba(255,255,255,.9) inset, 0 28px 60px rgba(22,41,31,.16);"><div style="font-family:'Playfair Display',serif;font-size:36px;font-weight:500;color:#005C3E;line-height:1;letter-spacing:-1px;">24 hrs</div><div style="font-size:12.5px;color:#8C8474;margin-top:10px;line-height:1.5;">Care, every day of the year</div></div>
+        <div style="grid-column:1 / -1;background:linear-gradient(150deg,#04372A,#005C3E);border-radius:18px;padding:30px 28px;box-shadow:0 0 0 1px rgba(216,190,134,.22), 0 22px 50px rgba(4,55,42,.3);">
+          <div style="font-weight:600;font-size:10.5px;letter-spacing:.3em;color:#D8BE86;margin-bottom:8px;">FULLY ACCREDITED &amp; AUDITABLE</div>
+          <div style="font-size:13px;line-height:1.7;color:rgba(251,248,241,.6);font-weight:300;margin-bottom:18px;">Select any authority to view its original certificate.</div>
+          <div style="display:flex;flex-wrap:wrap;gap:20px 18px;">
+            <button type="button" onClick="{{ openPcp }}" title="Pakistan Centre for Philanthropy" style="font-family:'Montserrat',sans-serif;cursor:pointer;border:0;background:transparent;padding:0;display:flex;flex-direction:column;align-items:center;gap:11px;width:98px;transition:transform .45s cubic-bezier(.2,.8,.2,1);" style-hover="transform:translateY(-7px);">
+              <span style="width:78px;height:78px;border-radius:50%;background:#FFFFFF;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 1px rgba(216,190,134,.5), 0 2px 0 rgba(255,255,255,.55) inset, 0 12px 28px rgba(0,0,0,.36);transition:box-shadow .45s ease;" style-hover="box-shadow:0 0 0 2px rgba(227,203,147,.95), 0 2px 0 rgba(255,255,255,.6) inset, 0 20px 42px rgba(0,0,0,.46);">
+                <img src="assets/logos/pcp.jpg" alt="Pakistan Centre for Philanthropy" style="width:58px;height:58px;object-fit:contain;display:block;">
+              </span>
+              <span style="font-size:9.5px;font-weight:600;letter-spacing:.08em;color:rgba(251,248,241,.8);text-align:center;line-height:1.4;text-transform:uppercase;">PCP<br><span style="color:rgba(251,248,241,.5);font-weight:400;letter-spacing:.05em;">Certified NPO</span></span>
+            </button>
+            <button type="button" onClick="{{ openShccLicence }}" title="Sindh Healthcare Commission — Regular Licence" style="font-family:'Montserrat',sans-serif;cursor:pointer;border:0;background:transparent;padding:0;display:flex;flex-direction:column;align-items:center;gap:11px;width:98px;transition:transform .45s cubic-bezier(.2,.8,.2,1);" style-hover="transform:translateY(-7px);">
+              <span style="width:78px;height:78px;border-radius:50%;background:#FFFFFF;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 1px rgba(216,190,134,.5), 0 2px 0 rgba(255,255,255,.55) inset, 0 12px 28px rgba(0,0,0,.36);transition:box-shadow .45s ease;" style-hover="box-shadow:0 0 0 2px rgba(227,203,147,.95), 0 2px 0 rgba(255,255,255,.6) inset, 0 20px 42px rgba(0,0,0,.46);">
+                <img src="assets/logos/shcc.png" alt="Sindh Healthcare Commission — Regular Licence" style="width:58px;height:58px;object-fit:contain;display:block;">
+              </span>
+              <span style="font-size:9.5px;font-weight:600;letter-spacing:.08em;color:rgba(251,248,241,.8);text-align:center;line-height:1.4;text-transform:uppercase;">SHCC<br><span style="color:rgba(251,248,241,.5);font-weight:400;letter-spacing:.05em;">Regular Licence</span></span>
+            </button>
+            <button type="button" onClick="{{ openShccReg }}" title="Sindh Healthcare Commission — Registration" style="font-family:'Montserrat',sans-serif;cursor:pointer;border:0;background:transparent;padding:0;display:flex;flex-direction:column;align-items:center;gap:11px;width:98px;transition:transform .45s cubic-bezier(.2,.8,.2,1);" style-hover="transform:translateY(-7px);">
+              <span style="width:78px;height:78px;border-radius:50%;background:#FFFFFF;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 1px rgba(216,190,134,.5), 0 2px 0 rgba(255,255,255,.55) inset, 0 12px 28px rgba(0,0,0,.36);transition:box-shadow .45s ease;" style-hover="box-shadow:0 0 0 2px rgba(227,203,147,.95), 0 2px 0 rgba(255,255,255,.6) inset, 0 20px 42px rgba(0,0,0,.46);">
+                <img src="assets/logos/shcc.png" alt="Sindh Healthcare Commission — Registration" style="width:58px;height:58px;object-fit:contain;display:block;">
+              </span>
+              <span style="font-size:9.5px;font-weight:600;letter-spacing:.08em;color:rgba(251,248,241,.8);text-align:center;line-height:1.4;text-transform:uppercase;">SHCC<br><span style="color:rgba(251,248,241,.5);font-weight:400;letter-spacing:.05em;">Registration</span></span>
+            </button>
+            <button type="button" onClick="{{ openExemption }}" title="Federal Board of Revenue — NPO Tax Exemption" style="font-family:'Montserrat',sans-serif;cursor:pointer;border:0;background:transparent;padding:0;display:flex;flex-direction:column;align-items:center;gap:11px;width:98px;transition:transform .45s cubic-bezier(.2,.8,.2,1);" style-hover="transform:translateY(-7px);">
+              <span style="width:78px;height:78px;border-radius:50%;background:#FFFFFF;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 1px rgba(216,190,134,.5), 0 2px 0 rgba(255,255,255,.55) inset, 0 12px 28px rgba(0,0,0,.36);transition:box-shadow .45s ease;" style-hover="box-shadow:0 0 0 2px rgba(227,203,147,.95), 0 2px 0 rgba(255,255,255,.6) inset, 0 20px 42px rgba(0,0,0,.46);">
+                <img src="assets/logos/fbr.png" alt="Federal Board of Revenue — NPO Tax Exemption" style="width:58px;height:58px;object-fit:contain;display:block;">
+              </span>
+              <span style="font-size:9.5px;font-weight:600;letter-spacing:.08em;color:rgba(251,248,241,.8);text-align:center;line-height:1.4;text-transform:uppercase;">FBR<br><span style="color:rgba(251,248,241,.5);font-weight:400;letter-spacing:.05em;">Tax Exempt</span></span>
+            </button>
+            <button type="button" onClick="{{ openTaxpayer }}" title="Federal Board of Revenue — Taxpayer Registration" style="font-family:'Montserrat',sans-serif;cursor:pointer;border:0;background:transparent;padding:0;display:flex;flex-direction:column;align-items:center;gap:11px;width:98px;transition:transform .45s cubic-bezier(.2,.8,.2,1);" style-hover="transform:translateY(-7px);">
+              <span style="width:78px;height:78px;border-radius:50%;background:#FFFFFF;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 1px rgba(216,190,134,.5), 0 2px 0 rgba(255,255,255,.55) inset, 0 12px 28px rgba(0,0,0,.36);transition:box-shadow .45s ease;" style-hover="box-shadow:0 0 0 2px rgba(227,203,147,.95), 0 2px 0 rgba(255,255,255,.6) inset, 0 20px 42px rgba(0,0,0,.46);">
+                <img src="assets/logos/fbr.png" alt="Federal Board of Revenue — Taxpayer Registration" style="width:58px;height:58px;object-fit:contain;display:block;">
+              </span>
+              <span style="font-size:9.5px;font-weight:600;letter-spacing:.08em;color:rgba(251,248,241,.8);text-align:center;line-height:1.4;text-transform:uppercase;">FBR<br><span style="color:rgba(251,248,241,.5);font-weight:400;letter-spacing:.05em;">NTN 2567138</span></span>
+            </button>
+            <button type="button" onClick="{{ openTrust }}" title="Government of Sindh — Trust Renewal" style="font-family:'Montserrat',sans-serif;cursor:pointer;border:0;background:transparent;padding:0;display:flex;flex-direction:column;align-items:center;gap:11px;width:98px;transition:transform .45s cubic-bezier(.2,.8,.2,1);" style-hover="transform:translateY(-7px);">
+              <span style="width:78px;height:78px;border-radius:50%;background:#FFFFFF;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 1px rgba(216,190,134,.5), 0 2px 0 rgba(255,255,255,.55) inset, 0 12px 28px rgba(0,0,0,.36);transition:box-shadow .45s ease;" style-hover="box-shadow:0 0 0 2px rgba(227,203,147,.95), 0 2px 0 rgba(255,255,255,.6) inset, 0 20px 42px rgba(0,0,0,.46);">
+                <img src="assets/logos/sindh-govt.jpg" alt="Government of Sindh — Trust Renewal" style="width:58px;height:58px;object-fit:contain;display:block;">
+              </span>
+              <span style="font-size:9.5px;font-weight:600;letter-spacing:.08em;color:rgba(251,248,241,.8);text-align:center;line-height:1.4;text-transform:uppercase;">Govt. of Sindh<br><span style="color:rgba(251,248,241,.5);font-weight:400;letter-spacing:.05em;">Trust Act 2021</span></span>
+            </button>
+            <button type="button" onClick="{{ openCharity }}" title="Government of Sindh — Charities Commission" style="font-family:'Montserrat',sans-serif;cursor:pointer;border:0;background:transparent;padding:0;display:flex;flex-direction:column;align-items:center;gap:11px;width:98px;transition:transform .45s cubic-bezier(.2,.8,.2,1);" style-hover="transform:translateY(-7px);">
+              <span style="width:78px;height:78px;border-radius:50%;background:#FFFFFF;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 1px rgba(216,190,134,.5), 0 2px 0 rgba(255,255,255,.55) inset, 0 12px 28px rgba(0,0,0,.36);transition:box-shadow .45s ease;" style-hover="box-shadow:0 0 0 2px rgba(227,203,147,.95), 0 2px 0 rgba(255,255,255,.6) inset, 0 20px 42px rgba(0,0,0,.46);">
+                <img src="assets/logos/sindh-govt.jpg" alt="Government of Sindh — Charities Commission" style="width:58px;height:58px;object-fit:contain;display:block;">
+              </span>
+              <span style="font-size:9.5px;font-weight:600;letter-spacing:.08em;color:rgba(251,248,241,.8);text-align:center;line-height:1.4;text-transform:uppercase;">Govt. of Sindh<br><span style="color:rgba(251,248,241,.5);font-weight:400;letter-spacing:.05em;">Charities Comm.</span></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" style="background:linear-gradient(180deg,#F6F1E6,#FBF8F1);border-top:1px solid rgba(22,41,31,.07);border-bottom:1px solid rgba(22,41,31,.07);">
+    <div style="max-width:1240px;margin:0 auto;padding:120px 40px;">
+      <div data-reveal="1" style="opacity:0;display:flex;align-items:baseline;gap:22px;margin-bottom:40px;">
+        <span style="font-family:'Playfair Display',serif;font-size:64px;color:rgba(197,160,89,.32);line-height:.8;font-weight:500;">02</span>
+        <div>
+          <div style="font-weight:600;font-size:11px;letter-spacing:.42em;color:#A9863F;margin-bottom:6px;">SERVICES</div>
+          <div style="font-size:12.5px;letter-spacing:.18em;color:#A39A88;text-transform:uppercase;">The clinical ecosystem</div>
+        </div>
+        <span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(197,160,89,.45),transparent);"></span>
+      </div>
+      <div data-reveal="2" style="opacity:0;display:grid;grid-template-columns:1fr .9fr;gap:60px;align-items:end;margin-bottom:52px;">
+        <h2 style="font-family:'Playfair Display',serif;font-weight:500;font-size:56px;line-height:1.08;margin:0;color:#16291F;letter-spacing:-1.2px;">Comprehensive care, <em style="font-style:italic;color:#A9863F;">under one roof</em>.</h2>
+        <p style="font-size:16.5px;line-height:1.8;color:#544E43;margin:0;font-weight:300;">A 24-hour facility serving hundreds of low-income patients daily — removing the need to travel between clinics, and the cost barriers that delay care.</p>
+      </div>
+      <div data-reveal="3" style="opacity:0;display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-bottom:36px;">
+        <div style="background:rgba(255,255,255,.78);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:20px;padding:32px 30px;box-shadow:0 0 0 1px rgba(22,41,31,.06), 0 1px 0 rgba(255,255,255,.9) inset, 0 16px 40px rgba(22,41,31,.08);transition:transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s ease;" style-hover="transform:translateY(-7px);box-shadow:0 0 0 1px rgba(197,160,89,.32), 0 1px 0 rgba(255,255,255,.95) inset, 0 30px 64px rgba(22,41,31,.16);"><div style="font-family:'Playfair Display',serif;font-size:22px;color:#16291F;margin-bottom:12px;letter-spacing:-.3px;">24-Hour Urgent Care</div><div style="font-size:14.5px;line-height:1.72;color:#6B6456;font-weight:300;">Round-the-clock stabilisation for trauma, cardiac, respiratory &amp; pediatric emergencies.</div></div>
+        <div style="background:rgba(255,255,255,.78);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:20px;padding:32px 30px;box-shadow:0 0 0 1px rgba(22,41,31,.06), 0 1px 0 rgba(255,255,255,.9) inset, 0 16px 40px rgba(22,41,31,.08);transition:transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s ease;" style-hover="transform:translateY(-7px);box-shadow:0 0 0 1px rgba(197,160,89,.32), 0 1px 0 rgba(255,255,255,.95) inset, 0 30px 64px rgba(22,41,31,.16);"><div style="font-family:'Playfair Display',serif;font-size:22px;color:#16291F;margin-bottom:12px;letter-spacing:-.3px;">Multi-Specialty OPD</div><div style="font-size:14.5px;line-height:1.72;color:#6B6456;font-weight:300;">Senior consultants — pediatrics, gynecology, cardiology, gastroenterology &amp; more.</div></div>
+        <div style="background:rgba(255,255,255,.78);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:20px;padding:32px 30px;box-shadow:0 0 0 1px rgba(22,41,31,.06), 0 1px 0 rgba(255,255,255,.9) inset, 0 16px 40px rgba(22,41,31,.08);transition:transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s ease;" style-hover="transform:translateY(-7px);box-shadow:0 0 0 1px rgba(197,160,89,.32), 0 1px 0 rgba(255,255,255,.95) inset, 0 30px 64px rgba(22,41,31,.16);"><div style="font-family:'Playfair Display',serif;font-size:22px;color:#16291F;margin-bottom:12px;letter-spacing:-.3px;">Diagnostic Centre</div><div style="font-size:14.5px;line-height:1.72;color:#6B6456;font-weight:300;">Certified lab, digital X-ray, ECG &amp; ultrasound for accurate clinical decisions.</div></div>
+        <div style="background:rgba(255,255,255,.78);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:20px;padding:32px 30px;box-shadow:0 0 0 1px rgba(22,41,31,.06), 0 1px 0 rgba(255,255,255,.9) inset, 0 16px 40px rgba(22,41,31,.08);transition:transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s ease;" style-hover="transform:translateY(-7px);box-shadow:0 0 0 1px rgba(197,160,89,.32), 0 1px 0 rgba(255,255,255,.95) inset, 0 30px 64px rgba(22,41,31,.16);"><div style="font-family:'Playfair Display',serif;font-size:22px;color:#16291F;margin-bottom:12px;letter-spacing:-.3px;">In-House Pharmacy</div><div style="font-size:14.5px;line-height:1.72;color:#6B6456;font-weight:300;">Qualified pharmacists, strict inventory control, essential medicines always in stock.</div></div>
+        <div style="background:rgba(255,255,255,.78);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:20px;padding:32px 30px;box-shadow:0 0 0 1px rgba(22,41,31,.06), 0 1px 0 rgba(255,255,255,.9) inset, 0 16px 40px rgba(22,41,31,.08);transition:transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s ease;" style-hover="transform:translateY(-7px);box-shadow:0 0 0 1px rgba(197,160,89,.32), 0 1px 0 rgba(255,255,255,.95) inset, 0 30px 64px rgba(22,41,31,.16);"><div style="font-family:'Playfair Display',serif;font-size:22px;color:#16291F;margin-bottom:12px;letter-spacing:-.3px;">Ambulance &amp; Free Equipment</div><div style="font-size:14.5px;line-height:1.72;color:#6B6456;font-weight:300;">24-hour transport plus oxygen, wheelchairs &amp; nebulisers — free for home use.</div></div>
+        <div style="background:rgba(255,255,255,.78);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:20px;padding:32px 30px;box-shadow:0 0 0 1px rgba(22,41,31,.06), 0 1px 0 rgba(255,255,255,.9) inset, 0 16px 40px rgba(22,41,31,.08);transition:transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s ease;" style-hover="transform:translateY(-7px);box-shadow:0 0 0 1px rgba(197,160,89,.32), 0 1px 0 rgba(255,255,255,.95) inset, 0 30px 64px rgba(22,41,31,.16);"><div style="font-family:'Playfair Display',serif;font-size:22px;color:#16291F;margin-bottom:12px;letter-spacing:-.3px;">Clean Water (WASH)</div><div style="font-size:14.5px;line-height:1.72;color:#6B6456;font-weight:300;">Sabeel, deep bore wells &amp; an RO plant certified by AKU &amp; PCSIR laboratories.</div></div>
+      </div>
+      <div data-reveal="4" style="opacity:0;background:linear-gradient(150deg,#04372A,#005C3E 60%,#03412F);border-radius:22px;padding:38px 46px;display:flex;align-items:center;gap:46px;flex-wrap:wrap;box-shadow:0 0 0 1px rgba(216,190,134,.22), 0 30px 70px rgba(4,55,42,.32);">
+        <div>
+          <div style="font-weight:600;font-size:10.5px;letter-spacing:.3em;color:#D8BE86;margin-bottom:8px;">NO ONE IS TURNED AWAY</div>
+          <div style="font-family:'Playfair Display',serif;font-size:27px;color:#FBF8F1;letter-spacing:-.4px;">A subsidy ladder for<br>every patient</div>
+        </div>
+        <div style="flex:1;min-width:480px;display:flex;">
+          <div style="flex:1;padding:0 28px;border-left:1px solid rgba(216,190,134,.28);"><div style="font-family:'Playfair Display',serif;font-size:42px;font-weight:500;color:#E3CB93;line-height:1;letter-spacing:-1px;">25%</div><div style="font-size:13px;color:rgba(251,248,241,.72);margin-top:10px;line-height:1.5;font-weight:300;">Standard walk-in subsidy</div></div>
+          <div style="flex:1;padding:0 28px;border-left:1px solid rgba(216,190,134,.28);"><div style="font-family:'Playfair Display',serif;font-size:42px;font-weight:500;color:#E3CB93;line-height:1;letter-spacing:-1px;">50%</div><div style="font-size:13px;color:rgba(251,248,241,.72);margin-top:10px;line-height:1.5;font-weight:300;">Hardship cases, via Zakat reserves</div></div>
+          <div style="flex:1;padding:0 28px;border-left:1px solid rgba(216,190,134,.28);"><div style="font-family:'Playfair Display',serif;font-size:42px;font-weight:500;color:#E3CB93;line-height:1;letter-spacing:-1px;">100%</div><div style="font-size:13px;color:rgba(251,248,241,.72);margin-top:10px;line-height:1.5;font-weight:300;">Full sponsorship for extreme distress</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="impact" style="background:linear-gradient(165deg,#04372A,#005C3E 55%,#03412F);color:#FBF8F1;position:relative;overflow:hidden;">
+    <div style="position:absolute;top:-220px;right:-180px;width:680px;height:680px;border-radius:50%;background:radial-gradient(circle, rgba(197,160,89,.18), transparent 66%);animation:kaGlow 13s ease-in-out infinite;"></div>
+    <div style="max-width:1240px;margin:0 auto;padding:120px 40px;position:relative;">
+      <div data-reveal="1" style="opacity:0;display:flex;align-items:baseline;gap:22px;margin-bottom:52px;">
+        <span style="font-family:'Playfair Display',serif;font-size:64px;color:rgba(216,190,134,.34);line-height:.8;font-weight:500;">03</span>
+        <div>
+          <div style="font-weight:600;font-size:11px;letter-spacing:.42em;color:#D8BE86;margin-bottom:6px;">IMPACT</div>
+          <div style="font-size:12.5px;letter-spacing:.18em;color:rgba(251,248,241,.5);text-transform:uppercase;">Proven &amp; transparent</div>
+        </div>
+        <span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(216,190,134,.4),transparent);"></span>
+      </div>
+      <div style="display:grid;grid-template-columns:.88fr 1.12fr;gap:72px;align-items:center;">
+        <div data-reveal="2" style="opacity:0;">
+          <div style="font-family:'Playfair Display',serif;font-weight:500;font-size:170px;line-height:.84;color:#E3CB93;letter-spacing:-6px;">78%</div>
+          <div style="font-size:21px;line-height:1.55;margin-top:24px;font-weight:300;">of the 2026 camp budget — <strong style="color:#E3CB93;font-weight:600;">PKR 1,257,111 of PKR 1,611,871</strong> — was spent solely on free medicines.</div>
+          <div style="font-size:15px;line-height:1.75;color:rgba(251,248,241,.62);margin-top:18px;font-weight:300;">Operations took the remaining PKR 354,760. Donor contributions route directly into patient care — bypassing administrative inflation.</div>
+        </div>
+        <div data-reveal="3" style="opacity:0;">
+          <div style="font-weight:600;font-size:10.5px;letter-spacing:.3em;color:#D8BE86;margin-bottom:8px;">FIELD CASE STUDY</div>
+          <div style="font-family:'Playfair Display',serif;font-size:29px;margin-bottom:26px;letter-spacing:-.5px;">FMC-01 — Purana Golimar, 26 April 2026</div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+            <div style="background:rgba(255,255,255,.07);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:18px;padding:26px 22px;box-shadow:0 0 0 1px rgba(216,190,134,.24), 0 1px 0 rgba(255,255,255,.12) inset, 0 18px 40px rgba(0,0,0,.24);transition:transform .4s cubic-bezier(.2,.8,.2,1), background .4s ease;" style-hover="transform:translateY(-6px);background:rgba(255,255,255,.12);"><div style="font-family:'Playfair Display',serif;font-size:42px;font-weight:500;line-height:1;letter-spacing:-1.5px;">320</div><div style="font-size:12.5px;color:rgba(251,248,241,.66);margin-top:11px;line-height:1.45;font-weight:300;">Patients treated</div></div>
+            <div style="background:rgba(255,255,255,.07);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:18px;padding:26px 22px;box-shadow:0 0 0 1px rgba(216,190,134,.24), 0 1px 0 rgba(255,255,255,.12) inset, 0 18px 40px rgba(0,0,0,.24);transition:transform .4s cubic-bezier(.2,.8,.2,1), background .4s ease;" style-hover="transform:translateY(-6px);background:rgba(255,255,255,.12);"><div style="font-family:'Playfair Display',serif;font-size:42px;font-weight:500;line-height:1;letter-spacing:-1.5px;">30</div><div style="font-size:12.5px;color:rgba(251,248,241,.66);margin-top:11px;line-height:1.45;font-weight:300;">Emergencies stabilised</div></div>
+            <div style="background:rgba(255,255,255,.07);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:18px;padding:26px 22px;box-shadow:0 0 0 1px rgba(216,190,134,.24), 0 1px 0 rgba(255,255,255,.12) inset, 0 18px 40px rgba(0,0,0,.24);transition:transform .4s cubic-bezier(.2,.8,.2,1), background .4s ease;" style-hover="transform:translateY(-6px);background:rgba(255,255,255,.12);"><div style="font-family:'Playfair Display',serif;font-size:42px;font-weight:500;line-height:1;letter-spacing:-1.5px;">6 hrs</div><div style="font-size:12.5px;color:rgba(251,248,241,.66);margin-top:11px;line-height:1.45;font-weight:300;">Continuous service</div></div>
+            <div style="background:rgba(255,255,255,.07);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:18px;padding:26px 22px;box-shadow:0 0 0 1px rgba(216,190,134,.24), 0 1px 0 rgba(255,255,255,.12) inset, 0 18px 40px rgba(0,0,0,.24);transition:transform .4s cubic-bezier(.2,.8,.2,1), background .4s ease;" style-hover="transform:translateY(-6px);background:rgba(255,255,255,.12);"><div style="font-family:'Playfair Display',serif;font-size:42px;font-weight:500;line-height:1;letter-spacing:-1.5px;">208</div><div style="font-size:12.5px;color:rgba(251,248,241,.66);margin-top:11px;line-height:1.45;font-weight:300;">Women &amp; girls served</div></div>
+            <div style="background:rgba(255,255,255,.07);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:18px;padding:26px 22px;box-shadow:0 0 0 1px rgba(216,190,134,.24), 0 1px 0 rgba(255,255,255,.12) inset, 0 18px 40px rgba(0,0,0,.24);transition:transform .4s cubic-bezier(.2,.8,.2,1), background .4s ease;" style-hover="transform:translateY(-6px);background:rgba(255,255,255,.12);"><div style="font-family:'Playfair Display',serif;font-size:42px;font-weight:500;line-height:1;letter-spacing:-1.5px;">124</div><div style="font-size:12.5px;color:rgba(251,248,241,.66);margin-top:11px;line-height:1.45;font-weight:300;">Children under 12</div></div>
+            <div style="background:linear-gradient(160deg,rgba(216,190,134,.22),rgba(216,190,134,.08));backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:18px;padding:26px 22px;box-shadow:0 0 0 1px rgba(216,190,134,.5), 0 1px 0 rgba(255,255,255,.2) inset, 0 18px 40px rgba(0,0,0,.26);"><div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:500;color:#E3CB93;line-height:1.05;letter-spacing:-.6px;">Rs 76,500</div><div style="font-size:12.5px;color:rgba(251,248,241,.74);margin-top:11px;line-height:1.45;font-weight:300;">Total admin cost — fully audited</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="camps" style="max-width:1240px;margin:0 auto;padding:120px 40px;">
+    <div data-reveal="1" style="opacity:0;display:flex;align-items:baseline;gap:22px;margin-bottom:40px;">
+      <span style="font-family:'Playfair Display',serif;font-size:64px;color:rgba(197,160,89,.32);line-height:.8;font-weight:500;">04</span>
+      <div>
+        <div style="font-weight:600;font-size:11px;letter-spacing:.42em;color:#A9863F;margin-bottom:6px;">MEDICAL CAMPS</div>
+        <div style="font-size:12.5px;letter-spacing:.18em;color:#A39A88;text-transform:uppercase;">Scaling outreach</div>
+      </div>
+      <span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(197,160,89,.45),transparent);"></span>
+    </div>
+    <h2 data-reveal="2" style="opacity:0;font-family:'Playfair Display',serif;font-weight:500;font-size:56px;line-height:1.08;margin:0 0 48px;color:#16291F;letter-spacing:-1.2px;">Taking the clinic <em style="font-style:italic;color:#A9863F;">to the streets</em>.</h2>
+    <div style="display:grid;grid-template-columns:1.12fr .88fr;gap:64px;align-items:start;">
+      <div data-reveal="3" style="opacity:0;">
+        <p style="font-size:17.5px;line-height:1.85;color:#544E43;margin:0 0 32px;font-weight:300;">The <strong style="color:#16291F;font-weight:600;">Free Medical Camp Programme</strong> plants a mobile primary-care clinic in the most neglected settlements of Karachi and Hub. Four camps were completed between April and July 2026, serving <strong style="color:#16291F;font-weight:600;">1,770 patients</strong> at a verified cost of <strong style="color:#16291F;font-weight:600;">PKR 1,611,871</strong>.</p>
+        <div style="background:linear-gradient(150deg,#04372A,#005C3E);border-radius:22px;padding:38px 42px;margin-bottom:26px;box-shadow:0 0 0 1px rgba(216,190,134,.22), 0 28px 64px rgba(4,55,42,.3);">
+          <div style="display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;">
+            <div style="font-family:'Playfair Display',serif;font-size:70px;font-weight:500;color:#E3CB93;line-height:.9;letter-spacing:-2.5px;">PKR 911</div>
+            <div style="font-size:18px;color:rgba(251,248,241,.7);font-weight:300;">average cost per patient</div>
+          </div>
+          <div style="font-size:16.5px;line-height:1.68;color:#FBF8F1;margin-top:16px;font-weight:300;">covers one patient's consultation, diagnostic screening <strong style="color:#E3CB93;font-weight:600;">and</strong> a full course of prescription medicine — measured across all four 2026 camps.</div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:26px;">
+          <div style="background:rgba(255,255,255,.72);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:18px;padding:22px 18px;box-shadow:0 0 0 1px rgba(22,41,31,.06), 0 1px 0 rgba(255,255,255,.9) inset, 0 16px 36px rgba(22,41,31,.08);transition:transform .4s cubic-bezier(.2,.8,.2,1);" style-hover="transform:translateY(-6px);"><div style="font-family:'Playfair Display',serif;font-size:32px;font-weight:500;color:#005C3E;line-height:1;letter-spacing:-1px;">4</div><div style="font-size:12px;color:#8C8474;margin-top:9px;line-height:1.45;">Camps completed<br>Apr–Jul 2026</div></div>
+          <div style="background:rgba(255,255,255,.72);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:18px;padding:22px 18px;box-shadow:0 0 0 1px rgba(22,41,31,.06), 0 1px 0 rgba(255,255,255,.9) inset, 0 16px 36px rgba(22,41,31,.08);transition:transform .4s cubic-bezier(.2,.8,.2,1);" style-hover="transform:translateY(-6px);"><div style="font-family:'Playfair Display',serif;font-size:32px;font-weight:500;color:#005C3E;line-height:1;letter-spacing:-1px;">1,770</div><div style="font-size:12px;color:#8C8474;margin-top:9px;line-height:1.45;">Patients served<br>in total</div></div>
+          <div style="background:rgba(255,255,255,.72);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:18px;padding:22px 18px;box-shadow:0 0 0 1px rgba(22,41,31,.06), 0 1px 0 rgba(255,255,255,.9) inset, 0 16px 36px rgba(22,41,31,.08);transition:transform .4s cubic-bezier(.2,.8,.2,1);" style-hover="transform:translateY(-6px);"><div style="font-family:'Playfair Display',serif;font-size:32px;font-weight:500;color:#005C3E;line-height:1;letter-spacing:-1px;">443</div><div style="font-size:12px;color:#8C8474;margin-top:9px;line-height:1.45;">Average patients<br>per camp</div></div>
+          <div style="background:rgba(255,255,255,.72);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:18px;padding:22px 18px;box-shadow:0 0 0 1px rgba(22,41,31,.06), 0 1px 0 rgba(255,255,255,.9) inset, 0 16px 36px rgba(22,41,31,.08);transition:transform .4s cubic-bezier(.2,.8,.2,1);" style-hover="transform:translateY(-6px);"><div style="font-family:'Playfair Display',serif;font-size:32px;font-weight:500;color:#005C3E;line-height:1;letter-spacing:-1px;">403K</div><div style="font-size:12px;color:#8C8474;margin-top:9px;line-height:1.45;">Average PKR cost<br>per camp</div></div>
+        </div>
+        <div style="background:rgba(255,255,255,.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:20px;padding:26px 30px;box-shadow:0 0 0 1px rgba(197,160,89,.28), 0 1px 0 rgba(255,255,255,.9) inset, 0 16px 40px rgba(22,41,31,.08);">
+          <div style="font-weight:600;font-size:10.5px;letter-spacing:.3em;color:#A9863F;margin-bottom:16px;">SEASONAL · ANNUAL QURBANI</div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;padding:9px 0;border-bottom:1px solid rgba(22,41,31,.09);"><span style="font-size:15.5px;color:#16291F;font-weight:300;">Goat Qurbani (full animal)</span><span style="font-family:'Playfair Display',serif;font-size:21px;color:#005C3E;">Rs 22,000</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;padding:9px 0;"><span style="font-size:15.5px;color:#16291F;font-weight:300;">Cow Qurbani (per share)</span><span style="font-family:'Playfair Display',serif;font-size:21px;color:#005C3E;">Rs 32,000</span></div>
+          <div style="font-size:12.5px;color:#8C8474;margin-top:12px;line-height:1.6;font-weight:300;">Fresh meat distributed directly to orphans, widows &amp; families below the poverty line — with hygienic cold-chain transport.</div>
+        </div>
+      </div>
+      <div data-reveal="4" style="opacity:0;">
+        <img src="assets/camps-poster.jpg" alt="Free Medical Camps 2026 — starting Sunday 26 April, 400 Quarters, Karachi" style="width:100%;border-radius:22px;display:block;box-shadow:0 0 0 1px rgba(22,41,31,.08), 0 34px 76px rgba(22,41,31,.22);">
+        <div style="font-size:12.5px;color:#8C8474;margin-top:16px;line-height:1.6;letter-spacing:.02em;font-weight:300;">2026 campaign — <em style="font-family:'Playfair Display',serif;font-style:italic;font-size:14px;color:#16291F;">Sehat Sab Ke Liye</em>. Health for everyone, hope for many.</div>
+      </div>
+    </div>
+
+    <div data-reveal="5" style="opacity:0;margin-top:56px;">
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:22px;flex-wrap:wrap;">
+        <span style="font-weight:600;font-size:10.5px;letter-spacing:.3em;color:#A9863F;">CAMP-BY-CAMP LEDGER · 2026</span>
+        <span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(197,160,89,.45),transparent);"></span>
+        <span style="font-size:12px;color:#8C8474;font-weight:300;">Every figure audited and reconciled</span>
+      </div>
+      <div style="background:rgba(255,255,255,.72);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:20px;overflow:hidden;box-shadow:0 0 0 1px rgba(22,41,31,.07), 0 1px 0 rgba(255,255,255,.9) inset, 0 18px 44px rgba(22,41,31,.09);">
+        <table style="width:100%;border-collapse:collapse;font-size:13.5px;">
+          <thead>
+            <tr style="background:linear-gradient(150deg,#04372A,#005C3E);">
+              <th style="text-align:left;padding:16px 20px;font-size:10px;font-weight:700;letter-spacing:.22em;color:#D8BE86;">CAMP</th>
+              <th style="text-align:left;padding:16px 20px;font-size:10px;font-weight:700;letter-spacing:.22em;color:#D8BE86;">LOCATION &amp; DATE</th>
+              <th style="text-align:right;padding:16px 20px;font-size:10px;font-weight:700;letter-spacing:.22em;color:#D8BE86;">PATIENTS</th>
+              <th style="text-align:right;padding:16px 20px;font-size:10px;font-weight:700;letter-spacing:.22em;color:#D8BE86;">MEDICINES</th>
+              <th style="text-align:right;padding:16px 20px;font-size:10px;font-weight:700;letter-spacing:.22em;color:#D8BE86;">OPERATIONS</th>
+              <th style="text-align:right;padding:16px 20px;font-size:10px;font-weight:700;letter-spacing:.22em;color:#D8BE86;">TOTAL COST</th>
+              <th style="text-align:right;padding:16px 20px;font-size:10px;font-weight:700;letter-spacing:.22em;color:#D8BE86;">PER PATIENT</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid rgba(22,41,31,.07);">
+              <td style="padding:16px 20px;font-weight:600;color:#16291F;">FMC-01</td>
+              <td style="padding:16px 20px;color:#544E43;font-weight:300;">Purana Golimar, Karachi<br><span style="font-size:11.5px;color:#A39A88;">26 April 2026</span></td>
+              <td style="padding:16px 20px;text-align:right;color:#16291F;font-weight:600;">320</td>
+              <td style="padding:16px 20px;text-align:right;color:#005C3E;font-weight:600;">181,000<br><span style="font-size:11px;color:#A39A88;font-weight:400;">70%</span></td>
+              <td style="padding:16px 20px;text-align:right;color:#544E43;font-weight:300;">76,500</td>
+              <td style="padding:16px 20px;text-align:right;color:#16291F;font-weight:600;">257,500</td>
+              <td style="padding:16px 20px;text-align:right;color:#A9863F;font-weight:600;">804</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(22,41,31,.07);">
+              <td style="padding:16px 20px;font-weight:600;color:#16291F;">FMC-02</td>
+              <td style="padding:16px 20px;color:#544E43;font-weight:300;">Yousuf Goath, Baldiya Town<br><span style="font-size:11.5px;color:#A39A88;">14 June 2026</span></td>
+              <td style="padding:16px 20px;text-align:right;color:#16291F;font-weight:600;">254</td>
+              <td style="padding:16px 20px;text-align:right;color:#005C3E;font-weight:600;">177,560<br><span style="font-size:11px;color:#A39A88;font-weight:400;">73%</span></td>
+              <td style="padding:16px 20px;text-align:right;color:#544E43;font-weight:300;">65,800</td>
+              <td style="padding:16px 20px;text-align:right;color:#16291F;font-weight:600;">243,360</td>
+              <td style="padding:16px 20px;text-align:right;color:#A9863F;font-weight:600;">957</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(22,41,31,.07);">
+              <td style="padding:16px 20px;font-weight:600;color:#16291F;">FMC-03</td>
+              <td style="padding:16px 20px;color:#544E43;font-weight:300;">Galaxy Town, Hub<br><span style="font-size:11.5px;color:#A39A88;">5 July 2026</span></td>
+              <td style="padding:16px 20px;text-align:right;color:#16291F;font-weight:600;">577</td>
+              <td style="padding:16px 20px;text-align:right;color:#005C3E;font-weight:600;">401,260<br><span style="font-size:11px;color:#A39A88;font-weight:400;">79%</span></td>
+              <td style="padding:16px 20px;text-align:right;color:#544E43;font-weight:300;">103,900</td>
+              <td style="padding:16px 20px;text-align:right;color:#16291F;font-weight:600;">505,160</td>
+              <td style="padding:16px 20px;text-align:right;color:#A9863F;font-weight:600;">875</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(22,41,31,.07);">
+              <td style="padding:16px 20px;font-weight:600;color:#16291F;">FMC-04</td>
+              <td style="padding:16px 20px;color:#544E43;font-weight:300;">Galaxy Town, Hub<br><span style="font-size:11.5px;color:#A39A88;">26 July 2026</span></td>
+              <td style="padding:16px 20px;text-align:right;color:#16291F;font-weight:600;">619</td>
+              <td style="padding:16px 20px;text-align:right;color:#005C3E;font-weight:600;">497,291<br><span style="font-size:11px;color:#A39A88;font-weight:400;">82%</span></td>
+              <td style="padding:16px 20px;text-align:right;color:#544E43;font-weight:300;">108,560</td>
+              <td style="padding:16px 20px;text-align:right;color:#16291F;font-weight:600;">605,851</td>
+              <td style="padding:16px 20px;text-align:right;color:#A9863F;font-weight:600;">979</td>
+            </tr>
+            <tr style="background:rgba(197,160,89,.13);">
+              <td style="padding:18px 20px;font-family:'Playfair Display',serif;font-size:17px;color:#16291F;">Total</td>
+              <td style="padding:18px 20px;color:#8C8474;font-weight:300;font-size:12.5px;">4 camps · Apr–Jul 2026</td>
+              <td style="padding:18px 20px;text-align:right;font-family:'Playfair Display',serif;font-size:19px;color:#16291F;">1,770</td>
+              <td style="padding:18px 20px;text-align:right;font-family:'Playfair Display',serif;font-size:19px;color:#005C3E;">1,257,111<br><span style="font-family:'Montserrat',sans-serif;font-size:11px;color:#A39A88;">78%</span></td>
+              <td style="padding:18px 20px;text-align:right;font-family:'Playfair Display',serif;font-size:19px;color:#544E43;">354,760</td>
+              <td style="padding:18px 20px;text-align:right;font-family:'Playfair Display',serif;font-size:19px;color:#16291F;">1,611,871</td>
+              <td style="padding:18px 20px;text-align:right;font-family:'Playfair Display',serif;font-size:19px;color:#A9863F;">911</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="font-size:12.5px;color:#8C8474;margin-top:14px;line-height:1.65;font-weight:300;">All amounts in PKR. Medicines are funded entirely from the Zakat Fund (PKR 1,257,111) and operations entirely from non-Zakat donations (PKR 354,760) — full Shariah segregation maintained in every camp ledger. 22,309 medicine units dispensed; 57 emergencies stabilised on site.</div>
+    </div>
+  </section>
+
+  <section id="future" style="background:linear-gradient(180deg,#F6F1E6,#FBF8F1);border-top:1px solid rgba(22,41,31,.07);border-bottom:1px solid rgba(22,41,31,.07);">
+    <div style="max-width:1240px;margin:0 auto;padding:120px 40px;">
+      <div data-reveal="1" style="opacity:0;display:flex;align-items:baseline;gap:22px;margin-bottom:40px;">
+        <span style="font-family:'Playfair Display',serif;font-size:64px;color:rgba(197,160,89,.32);line-height:.8;font-weight:500;">05</span>
+        <div>
+          <div style="font-weight:600;font-size:11px;letter-spacing:.42em;color:#A9863F;margin-bottom:6px;">THE FUTURE</div>
+          <div style="font-size:12.5px;letter-spacing:.18em;color:#A39A88;text-transform:uppercase;">Capital expansion</div>
+        </div>
+        <span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(197,160,89,.45),transparent);"></span>
+      </div>
+      <div data-reveal="2" style="opacity:0;display:grid;grid-template-columns:1fr .9fr;gap:60px;align-items:end;margin-bottom:48px;">
+        <h2 style="font-family:'Playfair Display',serif;font-weight:500;font-size:56px;line-height:1.08;margin:0;color:#16291F;letter-spacing:-1.2px;">Building the <em style="font-style:italic;color:#A9863F;">next chapter</em>.</h2>
+        <p style="font-size:16.5px;line-height:1.8;color:#544E43;margin:0;font-weight:300;">Five planned wings will transform the Medical Centre into a comprehensive hospital — each a distinct capital opportunity for institutional and diaspora donors.</p>
+      </div>
+      <div data-reveal="3" style="opacity:0;display:grid;grid-template-columns:repeat(5,1fr);gap:18px;margin-bottom:32px;">
+        <div style="background:rgba(255,255,255,.78);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:18px;padding:28px 22px;box-shadow:0 0 0 1px rgba(22,41,31,.06), 0 1px 0 rgba(255,255,255,.9) inset, 0 16px 38px rgba(22,41,31,.08);transition:transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s ease;" style-hover="transform:translateY(-8px);box-shadow:0 0 0 1px rgba(197,160,89,.34), 0 1px 0 rgba(255,255,255,.95) inset, 0 30px 62px rgba(22,41,31,.16);"><div style="width:26px;height:2px;background:#C5A059;margin-bottom:16px;"></div><div style="font-family:'Playfair Display',serif;font-size:20px;color:#16291F;margin-bottom:12px;line-height:1.24;letter-spacing:-.3px;">Neonatal ICU</div><div style="font-size:13.5px;line-height:1.68;color:#6B6456;font-weight:300;">Incubators, ventilators &amp; phototherapy against high neonatal mortality.</div></div>
+        <div style="background:rgba(255,255,255,.78);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:18px;padding:28px 22px;box-shadow:0 0 0 1px rgba(22,41,31,.06), 0 1px 0 rgba(255,255,255,.9) inset, 0 16px 38px rgba(22,41,31,.08);transition:transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s ease;" style-hover="transform:translateY(-8px);box-shadow:0 0 0 1px rgba(197,160,89,.34), 0 1px 0 rgba(255,255,255,.95) inset, 0 30px 62px rgba(22,41,31,.16);"><div style="width:26px;height:2px;background:#C5A059;margin-bottom:16px;"></div><div style="font-family:'Playfair Display',serif;font-size:20px;color:#16291F;margin-bottom:12px;line-height:1.24;letter-spacing:-.3px;">Maternity &amp; Gynecology</div><div style="font-size:13.5px;line-height:1.68;color:#6B6456;font-weight:300;">Safe 24-hour maternal care — 2 labour rooms &amp; 4 operating theatres.</div></div>
+        <div style="background:rgba(255,255,255,.78);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:18px;padding:28px 22px;box-shadow:0 0 0 1px rgba(22,41,31,.06), 0 1px 0 rgba(255,255,255,.9) inset, 0 16px 38px rgba(22,41,31,.08);transition:transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s ease;" style-hover="transform:translateY(-8px);box-shadow:0 0 0 1px rgba(197,160,89,.34), 0 1px 0 rgba(255,255,255,.95) inset, 0 30px 62px rgba(22,41,31,.16);"><div style="width:26px;height:2px;background:#C5A059;margin-bottom:16px;"></div><div style="font-family:'Playfair Display',serif;font-size:20px;color:#16291F;margin-bottom:12px;line-height:1.24;letter-spacing:-.3px;">Eye Department &amp; OT</div><div style="font-size:13.5px;line-height:1.68;color:#6B6456;font-weight:300;">Targets preventable blindness, cataracts &amp; diabetic retinopathy.</div></div>
+        <div style="background:rgba(255,255,255,.78);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:18px;padding:28px 22px;box-shadow:0 0 0 1px rgba(22,41,31,.06), 0 1px 0 rgba(255,255,255,.9) inset, 0 16px 38px rgba(22,41,31,.08);transition:transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s ease;" style-hover="transform:translateY(-8px);box-shadow:0 0 0 1px rgba(197,160,89,.34), 0 1px 0 rgba(255,255,255,.95) inset, 0 30px 62px rgba(22,41,31,.16);"><div style="width:26px;height:2px;background:#C5A059;margin-bottom:16px;"></div><div style="font-family:'Playfair Display',serif;font-size:20px;color:#16291F;margin-bottom:12px;line-height:1.24;letter-spacing:-.3px;">Dental Clinic</div><div style="font-size:13.5px;line-height:1.68;color:#6B6456;font-weight:300;">Affordable oral care — dental chairs, digital X-ray &amp; surgery suite.</div></div>
+        <div style="background:rgba(255,255,255,.78);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:18px;padding:28px 22px;box-shadow:0 0 0 1px rgba(22,41,31,.06), 0 1px 0 rgba(255,255,255,.9) inset, 0 16px 38px rgba(22,41,31,.08);transition:transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s ease;" style-hover="transform:translateY(-8px);box-shadow:0 0 0 1px rgba(197,160,89,.34), 0 1px 0 rgba(255,255,255,.95) inset, 0 30px 62px rgba(22,41,31,.16);"><div style="width:26px;height:2px;background:#C5A059;margin-bottom:16px;"></div><div style="font-family:'Playfair Display',serif;font-size:20px;color:#16291F;margin-bottom:12px;line-height:1.24;letter-spacing:-.3px;">Physiotherapy Centre</div><div style="font-size:13.5px;line-height:1.68;color:#6B6456;font-weight:300;">Rehabilitation for stroke, spinal &amp; orthopedic-trauma recovery.</div></div>
+      </div>
+      <div data-reveal="4" style="opacity:0;background:rgba(255,255,255,.62);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:20px;padding:26px 36px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;box-shadow:0 0 0 1px rgba(197,160,89,.3), 0 1px 0 rgba(255,255,255,.9) inset, 0 16px 40px rgba(22,41,31,.08);">
+        <span style="font-family:'Playfair Display',serif;font-size:22px;color:#16291F;letter-spacing:-.3px;">Sponsor a room, a machine, or a whole wing</span>
+        <span style="font-size:14.5px;color:#6B6456;line-height:1.6;font-weight:300;">— every funded project carries a permanent dedication plaque, progress updates and annual patient-impact reports.</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="accreditation" style="max-width:1240px;margin:0 auto;padding:120px 40px;">
+    <div data-reveal="1" style="opacity:0;display:flex;align-items:baseline;gap:22px;margin-bottom:40px;">
+      <span style="font-family:'Playfair Display',serif;font-size:64px;color:rgba(197,160,89,.32);line-height:.8;font-weight:500;">06</span>
+      <div>
+        <div style="font-weight:600;font-size:11px;letter-spacing:.42em;color:#A9863F;margin-bottom:6px;">ACCREDITATION</div>
+        <div style="font-size:12.5px;letter-spacing:.18em;color:#A39A88;text-transform:uppercase;">Government registrations &amp; licences</div>
+      </div>
+      <span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(197,160,89,.45),transparent);"></span>
+    </div>
+    <div data-reveal="2" style="opacity:0;display:grid;grid-template-columns:1fr .9fr;gap:60px;align-items:end;margin-bottom:48px;">
+      <h2 style="font-family:'Playfair Display',serif;font-weight:500;font-size:56px;line-height:1.08;margin:0;color:#16291F;letter-spacing:-1.2px;">Verified by <em style="font-style:italic;color:#A9863F;">the state</em>.</h2>
+      <p style="font-size:16.5px;line-height:1.8;color:#544E43;margin:0;font-weight:300;">Every registration, licence and exemption below is a live government document. Select any card to view the original certificate.</p>
+    </div>
+    <div data-reveal="3" style="opacity:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;">
+
+      <button type="button" onClick="{{ openPcp }}" style="text-align:left;font-family:'Montserrat',sans-serif;min-width:0;cursor:pointer;border:0;background:rgba(255,255,255,.78);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:20px;padding:28px 26px;display:flex;flex-direction:column;gap:14px;box-shadow:0 0 0 1px rgba(22,41,31,.06), 0 1px 0 rgba(255,255,255,.9) inset, 0 16px 40px rgba(22,41,31,.08);transition:transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s ease;" style-hover="transform:translateY(-7px);box-shadow:0 0 0 1px rgba(197,160,89,.4), 0 1px 0 rgba(255,255,255,.95) inset, 0 30px 64px rgba(22,41,31,.17);">
+        <span style="display:inline-flex;align-self:flex-start;font-size:9.5px;font-weight:700;letter-spacing:.24em;color:#8A6E2F;background:linear-gradient(180deg,rgba(216,190,134,.5),rgba(197,160,89,.28));padding:6px 12px;border-radius:999px;box-shadow:0 0 0 1px rgba(197,160,89,.4);">CERTIFICATION</span>
+        <span style="font-family:'Playfair Display',serif;font-size:21px;color:#16291F;line-height:1.25;letter-spacing:-.3px;">Pakistan Centre for Philanthropy</span>
+        <span style="font-size:13.5px;line-height:1.65;color:#6B6456;font-weight:300;">Seal of NPO Good Practice — certifies governance, transparency &amp; financial systems.</span>
+        <span style="margin-top:auto;padding-top:16px;border-top:1px solid rgba(22,41,31,.08);display:flex;align-items:center;justify-content:space-between;gap:10px;">
+          <span style="font-size:11px;letter-spacing:.08em;color:#A39A88;overflow-wrap:anywhere;min-width:0;">PCP-2024/1416</span>
+          <span style="font-size:10.5px;font-weight:700;letter-spacing:.16em;color:#A9863F;">VIEW →</span>
+        </span>
+      </button>
+
+      <button type="button" onClick="{{ openExemption }}" style="text-align:left;font-family:'Montserrat',sans-serif;min-width:0;cursor:pointer;border:0;background:rgba(255,255,255,.78);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:20px;padding:28px 26px;display:flex;flex-direction:column;gap:14px;box-shadow:0 0 0 1px rgba(22,41,31,.06), 0 1px 0 rgba(255,255,255,.9) inset, 0 16px 40px rgba(22,41,31,.08);transition:transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s ease;" style-hover="transform:translateY(-7px);box-shadow:0 0 0 1px rgba(197,160,89,.4), 0 1px 0 rgba(255,255,255,.95) inset, 0 30px 64px rgba(22,41,31,.17);">
+        <span style="display:inline-flex;align-self:flex-start;font-size:9.5px;font-weight:700;letter-spacing:.24em;color:#8A6E2F;background:linear-gradient(180deg,rgba(216,190,134,.5),rgba(197,160,89,.28));padding:6px 12px;border-radius:999px;box-shadow:0 0 0 1px rgba(197,160,89,.4);">TAX EXEMPTION</span>
+        <span style="font-family:'Playfair Display',serif;font-size:21px;color:#16291F;line-height:1.25;letter-spacing:-.3px;">Federal Board of Revenue</span>
+        <span style="font-size:13.5px;line-height:1.65;color:#6B6456;font-weight:300;">Approved Non-Profit Organization under s.2(36)(c) — donations are tax-deductible.</span>
+        <span style="margin-top:auto;padding-top:16px;border-top:1px solid rgba(22,41,31,.08);display:flex;align-items:center;justify-content:space-between;gap:10px;">
+          <span style="font-size:11px;letter-spacing:.08em;color:#A39A88;overflow-wrap:anywhere;min-width:0;">Valid to 30 Jun 2028</span>
+          <span style="font-size:10.5px;font-weight:700;letter-spacing:.16em;color:#A9863F;">VIEW →</span>
+        </span>
+      </button>
+
+      <button type="button" onClick="{{ openTaxpayer }}" style="text-align:left;font-family:'Montserrat',sans-serif;min-width:0;cursor:pointer;border:0;background:rgba(255,255,255,.78);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:20px;padding:28px 26px;display:flex;flex-direction:column;gap:14px;box-shadow:0 0 0 1px rgba(22,41,31,.06), 0 1px 0 rgba(255,255,255,.9) inset, 0 16px 40px rgba(22,41,31,.08);transition:transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s ease;" style-hover="transform:translateY(-7px);box-shadow:0 0 0 1px rgba(197,160,89,.4), 0 1px 0 rgba(255,255,255,.95) inset, 0 30px 64px rgba(22,41,31,.17);">
+        <span style="display:inline-flex;align-self:flex-start;font-size:9.5px;font-weight:700;letter-spacing:.24em;color:#8A6E2F;background:linear-gradient(180deg,rgba(216,190,134,.5),rgba(197,160,89,.28));padding:6px 12px;border-radius:999px;box-shadow:0 0 0 1px rgba(197,160,89,.4);">REGISTRATION</span>
+        <span style="font-family:'Playfair Display',serif;font-size:21px;color:#16291F;line-height:1.25;letter-spacing:-.3px;">FBR Taxpayer Registration</span>
+        <span style="font-size:13.5px;line-height:1.65;color:#6B6456;font-weight:300;">Registered with Inland Revenue since December 2005 — RTO (Corporate) Karachi.</span>
+        <span style="margin-top:auto;padding-top:16px;border-top:1px solid rgba(22,41,31,.08);display:flex;align-items:center;justify-content:space-between;gap:10px;">
+          <span style="font-size:11px;letter-spacing:.08em;color:#A39A88;overflow-wrap:anywhere;min-width:0;">NTN 2567138</span>
+          <span style="font-size:10.5px;font-weight:700;letter-spacing:.16em;color:#A9863F;">VIEW →</span>
+        </span>
+      </button>
+
+      <button type="button" onClick="{{ openShccLicence }}" style="text-align:left;font-family:'Montserrat',sans-serif;min-width:0;cursor:pointer;border:0;background:rgba(255,255,255,.78);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:20px;padding:28px 26px;display:flex;flex-direction:column;gap:14px;box-shadow:0 0 0 1px rgba(22,41,31,.06), 0 1px 0 rgba(255,255,255,.9) inset, 0 16px 40px rgba(22,41,31,.08);transition:transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s ease;" style-hover="transform:translateY(-7px);box-shadow:0 0 0 1px rgba(197,160,89,.4), 0 1px 0 rgba(255,255,255,.95) inset, 0 30px 64px rgba(22,41,31,.17);">
+        <span style="display:inline-flex;align-self:flex-start;font-size:9.5px;font-weight:700;letter-spacing:.24em;color:#8A6E2F;background:linear-gradient(180deg,rgba(216,190,134,.5),rgba(197,160,89,.28));padding:6px 12px;border-radius:999px;box-shadow:0 0 0 1px rgba(197,160,89,.4);">CLINICAL LICENCE</span>
+        <span style="font-family:'Playfair Display',serif;font-size:21px;color:#16291F;line-height:1.25;letter-spacing:-.3px;">Sindh Healthcare Commission</span>
+        <span style="font-size:13.5px;line-height:1.65;color:#6B6456;font-weight:300;">Regular Licence for GP consultation, primary healthcare, collection centre &amp; pharmacy.</span>
+        <span style="margin-top:auto;padding-top:16px;border-top:1px solid rgba(22,41,31,.08);display:flex;align-items:center;justify-content:space-between;gap:10px;">
+          <span style="font-size:11px;letter-spacing:.08em;color:#A39A88;overflow-wrap:anywhere;min-width:0;">Valid to 19 Jun 2029</span>
+          <span style="font-size:10.5px;font-weight:700;letter-spacing:.16em;color:#A9863F;">VIEW →</span>
+        </span>
+      </button>
+
+      <button type="button" onClick="{{ openShccReg }}" style="text-align:left;font-family:'Montserrat',sans-serif;min-width:0;cursor:pointer;border:0;background:rgba(255,255,255,.78);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:20px;padding:28px 26px;display:flex;flex-direction:column;gap:14px;box-shadow:0 0 0 1px rgba(22,41,31,.06), 0 1px 0 rgba(255,255,255,.9) inset, 0 16px 40px rgba(22,41,31,.08);transition:transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s ease;" style-hover="transform:translateY(-7px);box-shadow:0 0 0 1px rgba(197,160,89,.4), 0 1px 0 rgba(255,255,255,.95) inset, 0 30px 64px rgba(22,41,31,.17);">
+        <span style="display:inline-flex;align-self:flex-start;font-size:9.5px;font-weight:700;letter-spacing:.24em;color:#8A6E2F;background:linear-gradient(180deg,rgba(216,190,134,.5),rgba(197,160,89,.28));padding:6px 12px;border-radius:999px;box-shadow:0 0 0 1px rgba(197,160,89,.4);">ESTABLISHMENT</span>
+        <span style="font-family:'Playfair Display',serif;font-size:21px;color:#16291F;line-height:1.25;letter-spacing:-.3px;">SHCC Registration Certificate</span>
+        <span style="font-size:13.5px;line-height:1.65;color:#6B6456;font-weight:300;">Khidmat-e-Alam Medical Centre registered as a Multiple Speciality establishment.</span>
+        <span style="margin-top:auto;padding-top:16px;border-top:1px solid rgba(22,41,31,.08);display:flex;align-items:center;justify-content:space-between;gap:10px;">
+          <span style="font-size:11px;letter-spacing:.08em;color:#A39A88;overflow-wrap:anywhere;min-width:0;">SHCC/P-KHI/08555</span>
+          <span style="font-size:10.5px;font-weight:700;letter-spacing:.16em;color:#A9863F;">VIEW →</span>
+        </span>
+      </button>
+
+      <button type="button" onClick="{{ openCharity }}" style="text-align:left;font-family:'Montserrat',sans-serif;min-width:0;cursor:pointer;border:0;background:rgba(255,255,255,.78);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:20px;padding:28px 26px;display:flex;flex-direction:column;gap:14px;box-shadow:0 0 0 1px rgba(22,41,31,.06), 0 1px 0 rgba(255,255,255,.9) inset, 0 16px 40px rgba(22,41,31,.08);transition:transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s ease;" style-hover="transform:translateY(-7px);box-shadow:0 0 0 1px rgba(197,160,89,.4), 0 1px 0 rgba(255,255,255,.95) inset, 0 30px 64px rgba(22,41,31,.17);">
+        <span style="display:inline-flex;align-self:flex-start;font-size:9.5px;font-weight:700;letter-spacing:.24em;color:#8A6E2F;background:linear-gradient(180deg,rgba(216,190,134,.5),rgba(197,160,89,.28));padding:6px 12px;border-radius:999px;box-shadow:0 0 0 1px rgba(197,160,89,.4);">CHARITY STATUS</span>
+        <span style="font-family:'Playfair Display',serif;font-size:21px;color:#16291F;line-height:1.25;letter-spacing:-.3px;">Sindh Charities Commission</span>
+        <span style="font-size:13.5px;line-height:1.65;color:#6B6456;font-weight:300;">Registered under the Sindh Charities Registration &amp; Regulation Act, 2019.</span>
+        <span style="margin-top:auto;padding-top:16px;border-top:1px solid rgba(22,41,31,.08);display:flex;align-items:center;justify-content:space-between;gap:10px;">
+          <span style="font-size:11px;letter-spacing:.08em;color:#A39A88;overflow-wrap:anywhere;min-width:0;">SN-4036420908082743</span>
+          <span style="font-size:10.5px;font-weight:700;letter-spacing:.16em;color:#A9863F;">VIEW →</span>
+        </span>
+      </button>
+
+      <button type="button" onClick="{{ openTrust }}" style="text-align:left;font-family:'Montserrat',sans-serif;min-width:0;cursor:pointer;border:0;background:rgba(255,255,255,.78);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:20px;padding:28px 26px;display:flex;flex-direction:column;gap:14px;box-shadow:0 0 0 1px rgba(22,41,31,.06), 0 1px 0 rgba(255,255,255,.9) inset, 0 16px 40px rgba(22,41,31,.08);transition:transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s ease;" style-hover="transform:translateY(-7px);box-shadow:0 0 0 1px rgba(197,160,89,.4), 0 1px 0 rgba(255,255,255,.95) inset, 0 30px 64px rgba(22,41,31,.17);">
+        <span style="display:inline-flex;align-self:flex-start;font-size:9.5px;font-weight:700;letter-spacing:.24em;color:#8A6E2F;background:linear-gradient(180deg,rgba(216,190,134,.5),rgba(197,160,89,.28));padding:6px 12px;border-radius:999px;box-shadow:0 0 0 1px rgba(197,160,89,.4);">TRUST DEED</span>
+        <span style="font-family:'Playfair Display',serif;font-size:21px;color:#16291F;line-height:1.25;letter-spacing:-.3px;">Directorate of Industries &amp; Commerce</span>
+        <span style="font-size:13.5px;line-height:1.65;color:#6B6456;font-weight:300;">Annual trust renewal under s.16-A, Sindh Trusts (Amendment) Act 2021 — 11 trustees.</span>
+        <span style="margin-top:auto;padding-top:16px;border-top:1px solid rgba(22,41,31,.08);display:flex;align-items:center;justify-content:space-between;gap:10px;">
+          <span style="font-size:11px;letter-spacing:.08em;color:#A39A88;overflow-wrap:anywhere;min-width:0;">KAR/CENTRAL/098/2023</span>
+          <span style="font-size:10.5px;font-weight:700;letter-spacing:.16em;color:#A9863F;">VIEW →</span>
+        </span>
+      </button>
+
+      <div style="background:linear-gradient(155deg,#04372A,#005C3E);border-radius:20px;padding:30px 28px;display:flex;flex-direction:column;justify-content:center;gap:12px;box-shadow:0 0 0 1px rgba(216,190,134,.24), 0 26px 60px rgba(4,55,42,.3);">
+        <span style="font-weight:600;font-size:10px;letter-spacing:.3em;color:#D8BE86;">ISO ALIGNED · SECP IN PROCESS</span>
+        <span style="font-family:'Playfair Display',serif;font-size:23px;color:#FBF8F1;line-height:1.25;letter-spacing:-.4px;">Seven live government approvals.</span>
+        <span style="font-size:13.5px;line-height:1.7;color:rgba(251,248,241,.72);font-weight:300;">Audited annually and open to donor inspection on request.</span>
+      </div>
+    </div>
+  </section>
+
+  <sc-if value="{{ certOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeCert }}" style="position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(6,30,22,.62);backdrop-filter:blur(22px) saturate(140%);-webkit-backdrop-filter:blur(22px) saturate(140%);animation:kaFade .3s ease both;cursor:zoom-out;">
+      <div onClick="{{ stopProp }}" style="cursor:default;display:flex;flex-direction:column;max-height:100%;max-width:1100px;width:100%;background:rgba(255,255,255,.1);backdrop-filter:blur(28px) saturate(160%);-webkit-backdrop-filter:blur(28px) saturate(160%);border-radius:24px;padding:22px;box-shadow:0 0 0 1px rgba(216,190,134,.4), 0 1px 0 rgba(255,255,255,.22) inset, 0 44px 100px rgba(0,0,0,.5);animation:kaPop .42s cubic-bezier(.2,.85,.25,1) both;">
+        <div style="display:flex;align-items:flex-start;gap:20px;padding:2px 6px 14px;">
+          <div style="flex:1;min-width:0;">
+            <div style="font-weight:600;font-size:9.5px;letter-spacing:.3em;color:#E3CB93;margin-bottom:6px;">{{ certKind }}</div>
+            <div style="font-family:'Playfair Display',serif;font-size:22px;color:#FBF8F1;line-height:1.22;letter-spacing:-.4px;">{{ certTitle }}</div>
+            <div style="font-size:12px;color:rgba(251,248,241,.66);margin-top:6px;font-weight:300;letter-spacing:.04em;">{{ certMeta }}</div>
+          </div>
+          <button type="button" onClick="{{ closeCert }}" aria-label="Close" style="flex:0 0 auto;cursor:pointer;border:0;width:42px;height:42px;border-radius:50%;font-size:19px;line-height:1;color:#16291F;background:linear-gradient(180deg,#E3CB93,#C5A059 55%,#AC8942);box-shadow:0 1px 0 rgba(255,255,255,.6) inset, 0 8px 22px rgba(0,0,0,.32);transition:transform .3s cubic-bezier(.2,.8,.2,1);" style-hover="transform:scale(1.08) rotate(90deg);">✕</button>
+        </div>
+        <div style="flex:1;min-height:0;overflow:auto;border-radius:14px;background:rgba(255,255,255,.06);box-shadow:0 0 0 1px rgba(255,255,255,.14) inset;display:flex;align-items:center;justify-content:center;padding:10px;">
+          <img ref="{{ certImgRef }}" alt="{{ certTitle }}" style="max-height:calc(100vh - 280px);max-width:100%;width:auto;height:auto;object-fit:contain;display:block;margin:0 auto;border-radius:8px;box-shadow:0 12px 34px rgba(0,0,0,.34);">
+        </div>
+        <div style="padding:16px 6px 4px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+          <span style="font-size:11.5px;color:rgba(251,248,241,.55);font-weight:300;letter-spacing:.05em;">Original document · Khidmat-e-Alam Welfare Trust</span>
+          <a href="{{ certSrc }}" target="_blank" rel="noopener" style="font-size:11px;font-weight:700;letter-spacing:.16em;color:#16291F;background:linear-gradient(180deg,#E3CB93,#C5A059 55%,#AC8942);padding:12px 24px;border-radius:999px;box-shadow:0 1px 0 rgba(255,255,255,.6) inset, 0 8px 22px rgba(0,0,0,.3);transition:transform .3s cubic-bezier(.2,.8,.2,1);" style-hover="transform:translateY(-2px);color:#16291F;">OPEN FULL SIZE</a>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <section style="max-width:1240px;margin:0 auto;padding:120px 40px;">
+    <div data-reveal="1" style="opacity:0;display:flex;align-items:baseline;gap:22px;margin-bottom:40px;">
+      <span style="font-family:'Playfair Display',serif;font-size:64px;color:rgba(197,160,89,.32);line-height:.8;font-weight:500;">07</span>
+      <div>
+        <div style="font-weight:600;font-size:11px;letter-spacing:.42em;color:#A9863F;margin-bottom:6px;">GLOBAL REACH</div>
+        <div style="font-size:12.5px;letter-spacing:.18em;color:#A39A88;text-transform:uppercase;">National &amp; international growth</div>
+      </div>
+      <span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(197,160,89,.45),transparent);"></span>
+    </div>
+    <h2 data-reveal="2" style="opacity:0;font-family:'Playfair Display',serif;font-weight:500;font-size:56px;line-height:1.08;margin:0 0 48px;color:#16291F;letter-spacing:-1.2px;">A model built to <em style="font-style:italic;color:#A9863F;">scale globally</em>.</h2>
+    <div data-reveal="3" style="opacity:0;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
+      <div style="background:rgba(255,255,255,.78);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:22px;padding:38px 34px;box-shadow:0 0 0 1px rgba(22,41,31,.06), 0 1px 0 rgba(255,255,255,.9) inset, 0 18px 44px rgba(22,41,31,.09);transition:transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s ease;" style-hover="transform:translateY(-8px);box-shadow:0 0 0 1px rgba(197,160,89,.34), 0 1px 0 rgba(255,255,255,.95) inset, 0 32px 68px rgba(22,41,31,.17);">
+        <div style="font-weight:600;font-size:10.5px;letter-spacing:.3em;color:#A9863F;margin-bottom:20px;">01 · DIGITAL TRUST</div>
+        <div style="font-family:'Playfair Display',serif;font-size:26px;color:#16291F;margin-bottom:18px;line-height:1.2;letter-spacing:-.5px;">Bridging the visibility gap</div>
+        <div style="font-size:14.5px;line-height:1.8;color:#6B6456;font-weight:300;">Online Zakat calculators, real-time impact dashboards and frictionless international payment gateways give donors clear proof of where funds go.</div>
+      </div>
+      <div style="background:rgba(255,255,255,.78);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:22px;padding:38px 34px;box-shadow:0 0 0 1px rgba(22,41,31,.06), 0 1px 0 rgba(255,255,255,.9) inset, 0 18px 44px rgba(22,41,31,.09);transition:transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s ease;" style-hover="transform:translateY(-8px);box-shadow:0 0 0 1px rgba(197,160,89,.34), 0 1px 0 rgba(255,255,255,.95) inset, 0 32px 68px rgba(22,41,31,.17);">
+        <div style="font-weight:600;font-size:10.5px;letter-spacing:.3em;color:#A9863F;margin-bottom:20px;">02 · DIASPORA</div>
+        <div style="font-family:'Playfair Display',serif;font-size:26px;color:#16291F;margin-bottom:18px;line-height:1.2;letter-spacing:-.5px;">Engaging a global network</div>
+        <div style="font-size:14.5px;line-height:1.8;color:#6B6456;font-weight:300;">Tax-deductible giving via GlobalGiving &amp; the American Pakistan Foundation, corporate matching gifts, and volunteer-led chapters in London, Houston &amp; Dubai.</div>
+      </div>
+      <div style="background:linear-gradient(155deg,#04372A,#005C3E);border-radius:22px;padding:38px 34px;box-shadow:0 0 0 1px rgba(216,190,134,.24), 0 28px 64px rgba(4,55,42,.3);transition:transform .4s cubic-bezier(.2,.8,.2,1);" style-hover="transform:translateY(-8px);">
+        <div style="font-weight:600;font-size:10.5px;letter-spacing:.3em;color:#D8BE86;margin-bottom:20px;">03 · CORPORATE CSR</div>
+        <div style="font-family:'Playfair Display',serif;font-size:26px;color:#FBF8F1;margin-bottom:18px;line-height:1.2;letter-spacing:-.5px;">Four pillars of partnership</div>
+        <div style="font-size:14.5px;line-height:1.8;color:rgba(251,248,241,.76);font-weight:300;">Social impact, environmental sustainability, ethical governance &amp; employee engagement — with 100% tax-deductible, ESG-aligned giving for corporate partners.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="donate" style="background:linear-gradient(165deg,#04372A,#005C3E 52%,#03412F);color:#FBF8F1;position:relative;overflow:hidden;">
+    <div style="position:absolute;bottom:-280px;right:-180px;width:680px;height:680px;border-radius:50%;background:radial-gradient(circle, rgba(197,160,89,.18), transparent 66%);animation:kaGlow 15s ease-in-out infinite;"></div>
+    <div style="max-width:1240px;margin:0 auto;padding:120px 40px 76px;position:relative;">
+      <div data-reveal="1" style="opacity:0;display:flex;align-items:center;gap:16px;margin-bottom:26px;">
+        <span style="width:42px;height:1px;background:linear-gradient(90deg,transparent,#C5A059);"></span>
+        <span style="font-weight:600;font-size:11px;letter-spacing:.42em;color:#D8BE86;">JOIN THE JOURNEY</span>
+      </div>
+      <h2 data-reveal="2" style="opacity:0;font-family:'Playfair Display',serif;font-weight:500;font-size:66px;line-height:1.03;margin:0 0 16px;letter-spacing:-1.8px;">Partner with <em style="font-style:italic;color:#E3CB93;">us</em>.</h2>
+      <p data-reveal="3" style="opacity:0;font-size:17.5px;line-height:1.7;color:rgba(251,248,241,.7);margin:0 0 40px;max-width:680px;font-weight:300;">We run <strong style="color:#E3CB93;font-weight:600;">two to three camps every month</strong>, continuously — the exact number depends on the site and the need. Every tier below is priced on the verified average of our four 2026 camps: PKR 402,968 per camp, 443 patients, PKR 911 each. No estimates. Each sponsorship closes with a full impact and financial report.</p>
+      <div data-reveal="4" style="opacity:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px;margin-bottom:52px;">
+        <div style="background:rgba(255,255,255,.07);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:18px;padding:26px 22px;box-shadow:0 0 0 1px rgba(216,190,134,.24), 0 1px 0 rgba(255,255,255,.12) inset, 0 18px 40px rgba(0,0,0,.22);transition:transform .4s cubic-bezier(.2,.8,.2,1), background .4s ease;" style-hover="transform:translateY(-8px);background:rgba(255,255,255,.13);"><div style="font-family:'Playfair Display',serif;font-size:26px;color:#E3CB93;line-height:1;letter-spacing:-.8px;">PKR 403K</div><div style="font-size:11.5px;color:rgba(251,248,241,.5);margin-top:5px;font-weight:300;">≈ USD 1,440</div><div style="font-size:13px;font-weight:600;margin-top:12px;letter-spacing:.02em;">Single Camp</div><div style="font-size:12px;color:rgba(251,248,241,.58);margin-top:6px;line-height:1.55;font-weight:300;">≈ 443 patients · PKR 314K medicines + PKR 89K operations</div></div>
+        <div style="background:rgba(255,255,255,.07);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:18px;padding:26px 22px;box-shadow:0 0 0 1px rgba(216,190,134,.24), 0 1px 0 rgba(255,255,255,.12) inset, 0 18px 40px rgba(0,0,0,.22);transition:transform .4s cubic-bezier(.2,.8,.2,1), background .4s ease;" style-hover="transform:translateY(-8px);background:rgba(255,255,255,.13);"><div style="font-family:'Playfair Display',serif;font-size:26px;color:#E3CB93;line-height:1;letter-spacing:-.8px;">PKR 806K</div><div style="font-size:11.5px;color:rgba(251,248,241,.5);margin-top:5px;font-weight:300;">≈ USD 2,880</div><div style="font-size:13px;font-weight:600;margin-top:12px;letter-spacing:.02em;">One Month · 2 Camps</div><div style="font-size:12px;color:rgba(251,248,241,.58);margin-top:6px;line-height:1.55;font-weight:300;">≈ 886 patients across two settlements</div></div>
+        <div style="background:rgba(255,255,255,.07);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:18px;padding:26px 22px;box-shadow:0 0 0 1px rgba(216,190,134,.24), 0 1px 0 rgba(255,255,255,.12) inset, 0 18px 40px rgba(0,0,0,.22);transition:transform .4s cubic-bezier(.2,.8,.2,1), background .4s ease;" style-hover="transform:translateY(-8px);background:rgba(255,255,255,.13);"><div style="font-family:'Playfair Display',serif;font-size:26px;color:#E3CB93;line-height:1;letter-spacing:-.8px;">PKR 1.21M</div><div style="font-size:11.5px;color:rgba(251,248,241,.5);margin-top:5px;font-weight:300;">≈ USD 4,320</div><div style="font-size:13px;font-weight:600;margin-top:12px;letter-spacing:.02em;">One Month · 3 Camps</div><div style="font-size:12px;color:rgba(251,248,241,.58);margin-top:6px;line-height:1.55;font-weight:300;">≈ 1,329 patients · a full high-need month</div></div>
+        <div style="background:rgba(255,255,255,.07);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:18px;padding:26px 22px;box-shadow:0 0 0 1px rgba(216,190,134,.24), 0 1px 0 rgba(255,255,255,.12) inset, 0 18px 40px rgba(0,0,0,.22);transition:transform .4s cubic-bezier(.2,.8,.2,1), background .4s ease;" style-hover="transform:translateY(-8px);background:rgba(255,255,255,.13);"><div style="font-family:'Playfair Display',serif;font-size:26px;color:#E3CB93;line-height:1;letter-spacing:-.8px;">PKR 2.02M</div><div style="font-size:11.5px;color:rgba(251,248,241,.5);margin-top:5px;font-weight:300;">≈ USD 7,200</div><div style="font-size:13px;font-weight:600;margin-top:12px;letter-spacing:.02em;">Five Camps</div><div style="font-size:12px;color:rgba(251,248,241,.58);margin-top:6px;line-height:1.55;font-weight:300;">≈ 2,215 patients · recurring district presence</div></div>
+        <div style="background:linear-gradient(160deg,rgba(216,190,134,.26),rgba(216,190,134,.09));backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:18px;padding:26px 22px;box-shadow:0 0 0 1px rgba(216,190,134,.55), 0 1px 0 rgba(255,255,255,.22) inset, 0 22px 48px rgba(0,0,0,.28);transition:transform .4s cubic-bezier(.2,.8,.2,1);" style-hover="transform:translateY(-8px);"><div style="font-family:'Playfair Display',serif;font-size:26px;color:#E3CB93;line-height:1;letter-spacing:-.8px;">PKR 4.03M</div><div style="font-size:11.5px;color:rgba(251,248,241,.6);margin-top:5px;font-weight:300;">≈ USD 14,400</div><div style="font-size:13px;font-weight:600;margin-top:12px;letter-spacing:.02em;">Ten Camps</div><div style="font-size:12px;color:rgba(251,248,241,.68);margin-top:6px;line-height:1.55;font-weight:300;">≈ 4,430 patients · roughly four months of outreach</div></div>
+      </div>
+
+      <div data-reveal="5" style="opacity:0;margin-bottom:52px;">
+        <div style="display:flex;align-items:center;gap:16px;margin-bottom:10px;flex-wrap:wrap;">
+          <span style="font-weight:600;font-size:10.5px;letter-spacing:.3em;color:#D8BE86;">OR SPONSOR BY PATIENT COUNT</span>
+          <span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(216,190,134,.35),transparent);"></span>
+        </div>
+        <p style="font-size:15px;line-height:1.7;color:rgba(251,248,241,.62);margin:0 0 26px;max-width:700px;font-weight:300;">Give any amount you choose — this is exactly what it treats. Each figure is the real 2026 average: <strong style="color:#E3CB93;font-weight:600;">PKR 911 per patient</strong> (PKR 710 medicines + PKR 200 operations).</p>
+        <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;">
+          <div style="background:rgba(255,255,255,.07);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:18px;padding:26px 22px;box-shadow:0 0 0 1px rgba(216,190,134,.24), 0 1px 0 rgba(255,255,255,.12) inset, 0 18px 40px rgba(0,0,0,.22);transition:transform .4s cubic-bezier(.2,.8,.2,1), background .4s ease;" style-hover="transform:translateY(-8px);background:rgba(255,255,255,.13);">
+            <div style="font-size:12px;font-weight:700;letter-spacing:.16em;color:#D8BE86;">100 PATIENTS</div>
+            <div style="font-family:'Playfair Display',serif;font-size:32px;color:#FBF8F1;line-height:1;letter-spacing:-1px;margin-top:14px;">PKR 91,100</div>
+            <div style="font-size:13px;color:rgba(251,248,241,.6);margin-top:6px;font-weight:300;">≈ USD 325</div>
+            <div style="margin-top:16px;padding-top:14px;border-top:1px solid rgba(216,190,134,.22);font-size:12px;line-height:1.9;color:rgba(251,248,241,.7);font-weight:300;">Medicines PKR 71,000<br>Operations PKR 20,000</div>
+          </div>
+          <div style="background:rgba(255,255,255,.07);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:18px;padding:26px 22px;box-shadow:0 0 0 1px rgba(216,190,134,.24), 0 1px 0 rgba(255,255,255,.12) inset, 0 18px 40px rgba(0,0,0,.22);transition:transform .4s cubic-bezier(.2,.8,.2,1), background .4s ease;" style-hover="transform:translateY(-8px);background:rgba(255,255,255,.13);">
+            <div style="font-size:12px;font-weight:700;letter-spacing:.16em;color:#D8BE86;">250 PATIENTS</div>
+            <div style="font-family:'Playfair Display',serif;font-size:32px;color:#FBF8F1;line-height:1;letter-spacing:-1px;margin-top:14px;">PKR 227,700</div>
+            <div style="font-size:13px;color:rgba(251,248,241,.6);margin-top:6px;font-weight:300;">≈ USD 813</div>
+            <div style="margin-top:16px;padding-top:14px;border-top:1px solid rgba(216,190,134,.22);font-size:12px;line-height:1.9;color:rgba(251,248,241,.7);font-weight:300;">Medicines PKR 177,600<br>Operations PKR 50,100</div>
+          </div>
+          <div style="background:rgba(255,255,255,.07);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:18px;padding:26px 22px;box-shadow:0 0 0 1px rgba(216,190,134,.24), 0 1px 0 rgba(255,255,255,.12) inset, 0 18px 40px rgba(0,0,0,.22);transition:transform .4s cubic-bezier(.2,.8,.2,1), background .4s ease;" style-hover="transform:translateY(-8px);background:rgba(255,255,255,.13);">
+            <div style="font-size:12px;font-weight:700;letter-spacing:.16em;color:#D8BE86;">500 PATIENTS</div>
+            <div style="font-family:'Playfair Display',serif;font-size:32px;color:#FBF8F1;line-height:1;letter-spacing:-1px;margin-top:14px;">PKR 455,300</div>
+            <div style="font-size:13px;color:rgba(251,248,241,.6);margin-top:6px;font-weight:300;">≈ USD 1,626</div>
+            <div style="margin-top:16px;padding-top:14px;border-top:1px solid rgba(216,190,134,.22);font-size:12px;line-height:1.9;color:rgba(251,248,241,.7);font-weight:300;">Medicines PKR 355,100<br>Operations PKR 100,200</div>
+          </div>
+          <div style="background:linear-gradient(160deg,rgba(216,190,134,.26),rgba(216,190,134,.09));backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:18px;padding:26px 22px;box-shadow:0 0 0 1px rgba(216,190,134,.55), 0 1px 0 rgba(255,255,255,.22) inset, 0 22px 48px rgba(0,0,0,.28);transition:transform .4s cubic-bezier(.2,.8,.2,1);" style-hover="transform:translateY(-8px);">
+            <div style="font-size:12px;font-weight:700;letter-spacing:.16em;color:#D8BE86;">1,000 PATIENTS</div>
+            <div style="font-family:'Playfair Display',serif;font-size:32px;color:#FBF8F1;line-height:1;letter-spacing:-1px;margin-top:14px;">PKR 910,700</div>
+            <div style="font-size:13px;color:rgba(251,248,241,.66);margin-top:6px;font-weight:300;">≈ USD 3,253</div>
+            <div style="margin-top:16px;padding-top:14px;border-top:1px solid rgba(216,190,134,.32);font-size:12px;line-height:1.9;color:rgba(251,248,241,.78);font-weight:300;">Medicines PKR 710,200<br>Operations PKR 200,400</div>
+          </div>
+        </div>
+        <div style="font-size:12px;color:rgba(251,248,241,.45);margin-top:16px;font-weight:300;line-height:1.6;">USD figures converted at PKR 280 = USD 1 and are indicative. Medicines are funded from the Zakat Fund; operations from general donations.</div>
+      </div>
+      <div data-reveal="6" style="opacity:0;border-top:1px solid rgba(216,190,134,.24);padding-top:44px;">
+        <div style="margin-bottom:34px;">
+          <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px;">
+            <span style="font-weight:600;font-size:11px;letter-spacing:.42em;color:#D8BE86;">DONATION CHANNELS</span>
+            <span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(216,190,134,.4),transparent);"></span>
+          </div>
+          <h3 style="font-family:'Playfair Display',serif;font-weight:500;font-size:42px;line-height:1.08;margin:0 0 14px;letter-spacing:-1px;">Where to send your <em style="font-style:italic;color:#E3CB93;">contribution</em>.</h3>
+          <p style="font-size:16px;line-height:1.75;color:rgba(251,248,241,.7);margin:0;max-width:720px;font-weight:300;">Official bank accounts of Khidmat-e-Alam Welfare Trust. Zakat and general donations are held in <strong style="color:#E3CB93;font-weight:600;">separate, segregated accounts</strong> — Zakat funds medicines only, general donations fund operations. Income tax exempt and PCP verified.</p>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px;flex-wrap:wrap;">
+          <span style="font-weight:600;font-size:10.5px;letter-spacing:.3em;color:#D8BE86;">ZAKAT FUND ACCOUNTS</span>
+          <span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(216,190,134,.35),transparent);"></span>
+          <span style="font-size:11.5px;color:rgba(251,248,241,.55);font-weight:300;">Applied exclusively to medicines for eligible beneficiaries</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-bottom:36px;">
+          <div style="background:rgba(255,255,255,.07);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:18px;padding:24px 22px;box-shadow:0 0 0 1px rgba(216,190,134,.24), 0 1px 0 rgba(255,255,255,.12) inset, 0 16px 38px rgba(0,0,0,.22);">
+            <div style="font-family:'Playfair Display',serif;font-size:20px;color:#FBF8F1;letter-spacing:-.3px;">Meezan Bank</div>
+            <div style="font-size:13px;color:rgba(251,248,241,.7);margin-top:10px;font-weight:300;">Acct 0185-0112385752</div>
+            <div style="font-size:11.5px;color:#E3CB93;margin-top:10px;letter-spacing:.06em;overflow-wrap:anywhere;">PK26MEZN0001850112385752</div>
+          </div>
+          <div style="background:rgba(255,255,255,.07);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:18px;padding:24px 22px;box-shadow:0 0 0 1px rgba(216,190,134,.24), 0 1px 0 rgba(255,255,255,.12) inset, 0 16px 38px rgba(0,0,0,.22);">
+            <div style="font-family:'Playfair Display',serif;font-size:20px;color:#FBF8F1;letter-spacing:-.3px;">Soneri Bank</div>
+            <div style="font-size:13px;color:rgba(251,248,241,.7);margin-top:10px;font-weight:300;">Acct 20012902299</div>
+            <div style="font-size:11.5px;color:#E3CB93;margin-top:10px;letter-spacing:.06em;overflow-wrap:anywhere;">PK88 SONE 0002 4200 1290 2299</div>
+          </div>
+          <div style="background:rgba(255,255,255,.07);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:18px;padding:24px 22px;box-shadow:0 0 0 1px rgba(216,190,134,.24), 0 1px 0 rgba(255,255,255,.12) inset, 0 16px 38px rgba(0,0,0,.22);">
+            <div style="font-family:'Playfair Display',serif;font-size:20px;color:#FBF8F1;letter-spacing:-.3px;">Bank Islami</div>
+            <div style="font-size:13px;color:rgba(251,248,241,.7);margin-top:10px;font-weight:300;">Acct 123100045020001</div>
+            <div style="font-size:11.5px;color:#E3CB93;margin-top:10px;letter-spacing:.06em;overflow-wrap:anywhere;">PK04BKIP0123100045020001</div>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px;flex-wrap:wrap;">
+          <span style="font-weight:600;font-size:10.5px;letter-spacing:.3em;color:#D8BE86;">GENERAL DONATION ACCOUNTS</span>
+          <span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(216,190,134,.35),transparent);"></span>
+          <span style="font-size:11.5px;color:rgba(251,248,241,.55);font-weight:300;">Sadaqah, general giving &amp; operational support</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-bottom:20px;">
+          <div style="background:rgba(255,255,255,.07);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:18px;padding:24px 22px;box-shadow:0 0 0 1px rgba(216,190,134,.24), 0 1px 0 rgba(255,255,255,.12) inset, 0 16px 38px rgba(0,0,0,.22);">
+            <div style="font-family:'Playfair Display',serif;font-size:20px;color:#FBF8F1;letter-spacing:-.3px;">Muslim Commercial Bank</div>
+            <div style="font-size:13px;color:rgba(251,248,241,.7);margin-top:10px;font-weight:300;">Acct 0124901010023773</div>
+            <div style="font-size:11.5px;color:#E3CB93;margin-top:10px;letter-spacing:.06em;overflow-wrap:anywhere;">PK13 MUCB 0124-9010-1002-3773</div>
+          </div>
+          <div style="background:rgba(255,255,255,.07);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:18px;padding:24px 22px;box-shadow:0 0 0 1px rgba(216,190,134,.24), 0 1px 0 rgba(255,255,255,.12) inset, 0 16px 38px rgba(0,0,0,.22);">
+            <div style="font-family:'Playfair Display',serif;font-size:20px;color:#FBF8F1;letter-spacing:-.3px;">Habib Metro Bank</div>
+            <div style="font-size:13px;color:rgba(251,248,241,.7);margin-top:10px;font-weight:300;overflow-wrap:anywhere;">Acct 06-98-89-29301-714-0102177</div>
+            <div style="font-size:11.5px;color:#E3CB93;margin-top:10px;letter-spacing:.06em;overflow-wrap:anywhere;">PK35-MPBL-9889-1771-4010-2177</div>
+          </div>
+          <div style="background:rgba(255,255,255,.07);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:18px;padding:24px 22px;box-shadow:0 0 0 1px rgba(216,190,134,.24), 0 1px 0 rgba(255,255,255,.12) inset, 0 16px 38px rgba(0,0,0,.22);">
+            <div style="font-family:'Playfair Display',serif;font-size:20px;color:#FBF8F1;letter-spacing:-.3px;">Faysal Bank</div>
+            <div style="font-size:13px;color:rgba(251,248,241,.7);margin-top:10px;font-weight:300;">Acct 3063301000004720</div>
+            <div style="font-size:11.5px;color:#E3CB93;margin-top:10px;letter-spacing:.06em;overflow-wrap:anywhere;">PK15 FAYS 3036 3301 0000 04720</div>
+          </div>
+        </div>
+        <div style="font-size:12.5px;color:rgba(251,248,241,.55);font-weight:300;letter-spacing:.04em;">All accounts held under <strong style="color:#E3CB93;font-weight:600;">KHIDMAT-E-ALAM WELFARE TRUST</strong> · Income tax exempt · PCP verified</div>
+      </div>
+
+      <div id="contact" data-reveal="7" style="opacity:0;margin-top:56px;border-top:1px solid rgba(216,190,134,.24);padding-top:44px;">
+        <div style="display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:start;">
+          <div>
+            <div style="font-weight:600;font-size:10.5px;letter-spacing:.3em;color:#D8BE86;margin-bottom:14px;">GET IN TOUCH</div>
+            <h3 style="font-family:'Playfair Display',serif;font-weight:500;font-size:40px;line-height:1.1;margin:0 0 18px;letter-spacing:-1px;">Together we build healthier communities.</h3>
+            <p style="font-size:16px;line-height:1.75;color:rgba(251,248,241,.7);margin:0 0 30px;font-weight:300;max-width:520px;">Reach us to donate, volunteer, partner, or learn more about how we are transforming lives across Pakistan.</p>
+            <div style="display:flex;gap:14px;flex-wrap:wrap;">
+              <a href="tel:021111111528" style="background:linear-gradient(180deg,#E3CB93 0%,#C5A059 52%,#AC8942 100%);color:#16291F;font-weight:700;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;padding:17px 34px;border-radius:999px;box-shadow:0 1px 0 rgba(255,255,255,.6) inset, 0 12px 30px rgba(0,0,0,.32);transition:transform .3s cubic-bezier(.2,.8,.2,1);" style-hover="transform:translateY(-3px);color:#16291F;">Call us now</a>
+              <a href="mailto:info@khidmat-e-alam.org" style="color:#FBF8F1;font-weight:600;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;padding:17px 30px;border-radius:999px;background:rgba(255,255,255,.07);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 0 0 1px rgba(216,190,134,.35), 0 1px 0 rgba(255,255,255,.16) inset;transition:background .3s ease, transform .3s cubic-bezier(.2,.8,.2,1);" style-hover="background:rgba(255,255,255,.14);transform:translateY(-3px);color:#FBF8F1;">Send email</a>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+            <div style="background:rgba(255,255,255,.07);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:16px;padding:22px 20px;box-shadow:0 0 0 1px rgba(216,190,134,.22), 0 1px 0 rgba(255,255,255,.12) inset;">
+              <div style="font-weight:600;font-size:10px;letter-spacing:.26em;color:#D8BE86;margin-bottom:10px;">HEAD OFFICE</div>
+              <div style="font-size:13.5px;line-height:1.7;color:rgba(251,248,241,.82);font-weight:300;">351 Usmania Society, B-Road<br>Nazimabad No.1, Karachi, Pakistan</div>
+            </div>
+            <div style="background:rgba(255,255,255,.07);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:16px;padding:22px 20px;box-shadow:0 0 0 1px rgba(216,190,134,.22), 0 1px 0 rgba(255,255,255,.12) inset;">
+              <div style="font-weight:600;font-size:10px;letter-spacing:.26em;color:#D8BE86;margin-bottom:10px;">PHONE &amp; UAN</div>
+              <div style="font-size:13.5px;line-height:1.85;font-weight:300;"><a href="tel:021111111528" style="color:rgba(251,248,241,.86);">021-111-111-528</a><br><a href="tel:03340003333" style="color:rgba(251,248,241,.86);">0334-0003333</a></div>
+            </div>
+            <div style="background:rgba(255,255,255,.07);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:16px;padding:22px 20px;box-shadow:0 0 0 1px rgba(216,190,134,.22), 0 1px 0 rgba(255,255,255,.12) inset;">
+              <div style="font-weight:600;font-size:10px;letter-spacing:.26em;color:#D8BE86;margin-bottom:10px;">EMAIL &amp; WEB</div>
+              <div style="font-size:13.5px;line-height:1.85;font-weight:300;overflow-wrap:anywhere;"><a href="mailto:info@khidmat-e-alam.org" style="color:rgba(251,248,241,.86);">info@khidmat-e-alam.org</a><br><a href="https://www.khidmat-e-alam.org/" target="_blank" rel="noopener" style="color:rgba(251,248,241,.86);">www.khidmat-e-alam.org</a></div>
+            </div>
+            <div style="background:rgba(255,255,255,.07);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:16px;padding:22px 20px;box-shadow:0 0 0 1px rgba(216,190,134,.22), 0 1px 0 rgba(255,255,255,.12) inset;">
+              <div style="font-weight:600;font-size:10px;letter-spacing:.26em;color:#D8BE86;margin-bottom:10px;">CHAIRMAN</div>
+              <div style="font-size:13.5px;line-height:1.7;color:rgba(251,248,241,.82);font-weight:300;">Mr. Himayatullah Sadukhani<br><span style="color:rgba(251,248,241,.55);">Founder &amp; Chairman</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;margin-top:52px;border-top:1px solid rgba(216,190,134,.16);padding-top:28px;">
+        <div style="display:flex;align-items:center;gap:14px;">
+          <img src="assets/ka-logo.jpg" alt="Khidmat-e-Alam Welfare Trust" style="width:40px;height:40px;border-radius:50%;object-fit:contain;background:#fff;box-shadow:0 0 0 1px rgba(216,190,134,.4);">
+          <span style="font-size:12.5px;color:rgba(251,248,241,.5);font-weight:300;">© 2026 Khidmat-e-Alam Welfare Trust · Serving humanity with care since 2005</span>
+        </div>
+        <span style="font-family:'Playfair Display',serif;font-style:italic;font-size:19px;color:#E3CB93;">"Sehat Sab Ke Liye" — our mission, our commitment.</span>
+      </div>
+    </div>
+  </section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const CERTS = {
+  pcp: { id: 'certPcp', src: 'assets/certs/pcp.webp', kind: 'CERTIFICATION', title: 'Pakistan Centre for Philanthropy', meta: 'Seal of NPO Good Practice · Certification No. PCP-2024/1416' },
+  exemption: { id: 'certExemption', src: 'assets/certs/fbr-exemption.webp', kind: 'TAX EXEMPTION', title: 'Federal Board of Revenue — NPO Approval', meta: 'Registration No. 2567138 · Section 2(36)(c) · Valid to 30 June 2028' },
+  taxpayer: { id: 'certTaxpayer', src: 'assets/certs/fbr-taxpayer.webp', kind: 'REGISTRATION', title: 'FBR Taxpayer Registration Certificate', meta: 'NTN 2567138 · Registered 30 December 2005 · RTO (Corporate) Karachi' },
+  shccLicence: { id: 'certShccLicence', src: 'assets/certs/shcc-license.webp', kind: 'CLINICAL LICENCE', title: 'Sindh Healthcare Commission — Regular Licence', meta: 'Licence No. SHCC/DLA-RL/00054 · Issued 20 June 2024 · Valid to 19 June 2029' },
+  shccReg: { id: 'certShccReg', src: 'assets/certs/shcc-reg.webp', kind: 'ESTABLISHMENT', title: 'SHCC Registration Certificate', meta: 'No. SHCC/P-KHI/08555 · Multiple Speciality · Category III · Trust-owned' },
+  charity: { id: 'certCharity', src: 'assets/certs/sindh-charity.webp', kind: 'CHARITY STATUS', title: 'Sindh Charities (R&R) Commission', meta: 'Registration No. SN-4036420908082743 · Sindh Charities Act 2019 · Valid to 16 July 2026' },
+  trust: { id: 'certTrust', src: 'assets/certs/sindh-trust.webp', kind: 'TRUST DEED', title: 'Directorate of Industries & Commerce, Sindh', meta: 'Annual Renewal No. KAR/CENTRAL/098/2023 · Section 16-A · Valid to 3 September 2026' }
+};
+
+class Component extends DCLogic {
+  state = { cert: null };
+  componentDidMount() {
+    this.headerEl = null;
+    this.progressEl = null;
+    this.reveal();
+    this.onScroll = () => {
+      const doc = document.scrollingElement || document.documentElement;
+      const max = doc.scrollHeight - doc.clientHeight;
+      const y = doc.scrollTop || window.scrollY || 0;
+      if (this.progressEl) this.progressEl.style.width = (max > 0 ? (y / max) * 100 : 0) + '%';
+      if (this.headerEl) {
+        const on = y > 24;
+        this.headerEl.style.boxShadow = on ? '0 10px 40px rgba(22,41,31,.12)' : 'none';
+        this.headerEl.style.background = on ? 'rgba(251,248,241,.86)' : 'rgba(251,248,241,.72)';
+      }
+    };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    document.addEventListener('scroll', this.onScroll, { passive: true, capture: true });
+    this.onScroll();
+    this.onKey = (e) => { if (e.key === 'Escape' && this.state.cert) this.close(); };
+    window.addEventListener('keydown', this.onKey);
+    Object.keys(CERTS).forEach((k) => { const i = new Image(); i.src = this.srcFor(CERTS[k]); });
+  }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.onScroll);
+    document.removeEventListener('scroll', this.onScroll, { capture: true });
+    window.removeEventListener('keydown', this.onKey);
+    document.body.style.overflow = '';
+    if (this.io) this.io.disconnect();
+    if (this.onVis) document.removeEventListener('visibilitychange', this.onVis);
+    clearTimeout(this.safety);
+  }
+  reveal() {
+    const nodes = Array.from(document.querySelectorAll('[data-reveal]'));
+    // Commits a real, inline end state — never depends on an animation timeline.
+    const show = (el) => { el.style.opacity = '1'; el.style.transform = 'none'; };
+    const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const inert = reduced || document.visibilityState === 'hidden' || !('IntersectionObserver' in window);
+    if (inert) { nodes.forEach(show); return; }
+    nodes.forEach((n) => {
+      const d = (parseInt(n.getAttribute('data-reveal'), 10) || 1) - 1;
+      n.style.transform = 'translateY(28px)';
+      n.style.transition = 'opacity .95s cubic-bezier(.2,.8,.2,1) ' + (d * 0.11) + 's, transform .95s cubic-bezier(.2,.8,.2,1) ' + (d * 0.11) + 's';
+    });
+    this.io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { show(e.target); this.io.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
+    requestAnimationFrame(() => nodes.forEach((n) => this.io.observe(n)));
+    // Safety net writes the visible state directly, not an animation.
+    this.safety = setTimeout(() => nodes.forEach(show), 2500);
+    document.addEventListener('visibilitychange', this.onVis = () => {
+      if (document.visibilityState === 'hidden') nodes.forEach(show);
+    });
+  }
+  open(key) {
+    return () => {
+      this.setState({ cert: key });
+      document.body.style.overflow = 'hidden';
+    };
+  }
+  close = () => {
+    this.setState({ cert: null });
+    document.body.style.overflow = '';
+  };
+  // Bundled/published builds expose inlined blob URLs on window.__resources.
+  srcFor(c) {
+    const r = (typeof window !== 'undefined' && window.__resources) || null;
+    return (r && r[c.id]) || c.src;
+  }
+  renderVals() {
+    const c = this.state.cert ? CERTS[this.state.cert] : null;
+    return {
+      headerRef: (el) => { this.headerEl = el; },
+      progressRef: (el) => { this.progressEl = el; },
+      certOpen: !!c,
+      certSrc: c ? this.srcFor(c) : '',
+      // Assigned via ref so the parser's preload scanner never sees a {{ }} hole as a URL.
+      certImgRef: (el) => { if (el && c) el.src = this.srcFor(c); },
+      certKind: c ? c.kind : '',
+      certTitle: c ? c.title : '',
+      certMeta: c ? c.meta : '',
+      closeCert: this.close,
+      stopProp: (e) => e.stopPropagation(),
+      openPcp: this.open('pcp'),
+      openExemption: this.open('exemption'),
+      openTaxpayer: this.open('taxpayer'),
+      openShccLicence: this.open('shccLicence'),
+      openShccReg: this.open('shccReg'),
+      openCharity: this.open('charity'),
+      openTrust: this.open('trust')
+    };
+  }
+}
+</script>
+</body>
+</html>
